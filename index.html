@@ -5,18 +5,11 @@
   <title>Zayn Kabir | Math • AI • Blockchain • Marketing</title>
 
   <meta name="description" content="Zayn Kabir is a Mathematics student, Blockchain tester, AI content creator and Digital Marketer from Bangladesh.">
-  <meta name="keywords" content="Zayn Kabir, Blockchain tester, Web3, AI content creator, Digital Marketing, Bangladesh">
+  <meta name="keywords" content="Zayn Kabir, Blockchain tester, Web3, AI, Digital Marketing, Bangladesh">
   <meta name="author" content="Zayn Kabir">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://nerdyfiroz.github.io/firoz-kabir/">
-
-  <meta property="og:title" content="Zayn Kabir | Blockchain • AI • Marketing">
-  <meta property="og:description" content="Mathematics student exploring Blockchain, AI & Digital Marketing from Bangladesh.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/nerdyfiroz/firoz-kabir/main/profile.jpg">
-  <meta property="og:url" content="https://nerdyfiroz.github.io/firoz-kabir/">
-  <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
 
@@ -32,6 +25,42 @@
 
     a { color: #38bdf8; text-decoration: none; }
 
+    /* Floating Top-Left Logo */
+    .logo-box {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.35);
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: 1px solid #38bdf8;
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+    }
+
+    .logo-box:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-box img {
+      height: 32px;
+      width: 32px;
+      border-radius: 6px;
+    }
+
+    .logo-text {
+      color: #38bdf8;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Background Patterns */
     .math-chain-bg {
       position: fixed;
       inset: 0;
@@ -65,16 +94,12 @@
       to { transform: translateY(-10vh); }
     }
 
-    body, header, section, footer { position: relative; z-index: 5; }
-
     header {
       text-align: center;
-      padding: 40px 20px;
-      background: rgba(2,6,23,0.92);
-      border-bottom: 1px solid #1f2937;
+      padding: 60px 20px 40px;
     }
 
-    header img {
+    header img.profile {
       width: 120px;
       height: 120px;
       object-fit: cover;
@@ -82,13 +107,10 @@
       border: 3px solid #38bdf8;
     }
 
-    header h1 { margin: 15px 0 5px; font-size: 26px; }
-    header p { color: #9ca3af; font-size: 14px; }
-
     .icon-buttons {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       margin-top: 15px;
     }
 
@@ -100,20 +122,13 @@
       justify-content: center;
       font-size: 18px;
       border-radius: 50%;
-      background: #38bdf8;
-      color: #020617;
-      transition: 0.3s;
-    }
-
-    .btn.icon.secondary {
       background: transparent;
       border: 1px solid #38bdf8;
       color: #38bdf8;
+      transition: 0.3s;
     }
 
-    .btn.icon:hover {
-      transform: scale(1.1);
-    }
+    .btn.icon:hover { transform: scale(1.12); }
 
     section {
       max-width: 900px;
@@ -122,10 +137,7 @@
       border-bottom: 1px solid #1f2937;
     }
 
-    h2 { font-size: 22px; color: #38bdf8; margin-bottom: 15px; }
-
-    ul { padding-left: 20px; }
-    ul li { margin-bottom: 8px; }
+    h2 { font-size: 24px; color: #38bdf8; margin-bottom: 15px; }
 
     .grid {
       display: grid;
@@ -147,60 +159,40 @@
       color: #9ca3af;
     }
 
-    .running-wrapper {
-      width: 100%;
-      overflow: hidden;
-      margin: 60px 0;
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: 0.9s ease-out;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .running-track {
-      display: flex;
-      width: max-content;
-      animation: runBanner 18s linear infinite;
-    }
-
-    .running-track img {
-      height: 120px;
-      margin-right: 60px;
-      border-radius: 12px;
-    }
-
-    @keyframes runBanner {
-      from { transform: translateX(-100%); }
-      to { transform: translateX(100vw); }
-    }
-
+    /* Page Transition */
     .page-transition {
       position: fixed;
       inset: 0;
       background: #020617;
       z-index: 9999;
       transform: translateY(0%);
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+      transition: transform 0.7s ease-in-out;
     }
-
     .page-transition.hide {
       transform: translateY(-100%);
-    }
-
-    .reveal {
-      opacity: 0;
-      filter: blur(8px);
-      transform: translateY(60px) scale(0.96);
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform, opacity, filter;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      filter: blur(0);
-      transform: translateY(0) scale(1);
     }
 
   </style>
 </head>
 
 <body>
+
+<!-- 🔥 TOP LEFT LOGO -->
+<div class="logo-box" onclick="window.location.reload()">
+  <img src="logo.png" alt="Logo">
+  <span class="logo-text">Zayn Kabir</span>
+</div>
 
 <div class="page-transition" id="pageTransition"></div>
 <div class="math-chain-bg"></div>
@@ -219,49 +211,37 @@
 </div>
 
 <header>
-  <img src="profile.jpg" alt="Zayn Kabir">
+  <img src="profile.jpg" class="profile" alt="Zayn Kabir">
   <h1>Zayn Kabir</h1>
   <p>Mathematics • AI • Blockchain • Digital Marketing</p>
   <p><strong>“Together we build. Together we grow.”</strong></p>
 
- <div class="icon-buttons">
+  <div class="icon-buttons">
 
-  <!-- X / Twitter -->
-  <a class="btn icon secondary" 
-     href="https://x.com/platform_360" 
-     target="_blank" 
-     title="X (Twitter): platform_360">
-     <i class="fab fa-x-twitter"></i>
-  </a>
+    <!-- X -->
+    <a class="btn icon" href="https://x.com/platform_360" target="_blank">
+      <i class="fab fa-x-twitter"></i>
+    </a>
 
-  <!-- Discord -->
- <a class="btn icon secondary" 
-   href="#" 
-   onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');"
-   title="Discord: zaynkabir">
-   <i class="fab fa-discord"></i>
-</a>
+    <!-- Discord (Copy Username) -->
+    <a class="btn icon" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');">
+      <i class="fab fa-discord"></i>
+    </a>
 
-  <!-- Telegram -->
-  <a class="btn icon secondary" 
-     href="https://t.me/Nerdyfiroz" 
-     target="_blank" 
-     title="Telegram: Nerdyfiroz">
-     <i class="fab fa-telegram"></i>
-  </a>
+    <!-- Telegram -->
+    <a class="btn icon" href="https://t.me/Nerdyfiroz" target="_blank">
+      <i class="fab fa-telegram"></i>
+    </a>
 
-</div>
-
-
+  </div>
 </header>
 
-<section id="about">
+<section id="about" class="reveal">
   <h2>About Me</h2>
   <p>
-    I’m Zayn Kabir, a lifelong learner who believes that knowledge exists
-    everywhere — in people, technology, and experience. I’m shaping my journey at the intersection of
-    mathematics, artificial intelligence, and blockchain, working to transform
-    complex ideas into impactful creations.
+    I’m Zayn Kabir, a lifelong learner exploring the intersection of mathematics,
+    artificial intelligence, and blockchain. My mission is to transform complex
+    ideas into impactful creations and help build meaningful digital communities.
   </p>
 </section>
 
@@ -281,21 +261,18 @@
 <section id="projects" class="reveal">
   <h2>Projects</h2>
   <div class="grid">
-    <div class="card"><h3>Web3 Testing</h3><p>Testing blockchain platforms.</p></div>
-    <div class="card"><h3>Community Manager</h3><p>Active Web3 manager.</p></div>
+    <div class="card"><h3>Web3 Testing</h3><p>Testing decentralized blockchain platforms.</p></div>
+    <div class="card"><h3>Community Manager</h3><p>Managing and scaling global Web3 communities.</p></div>
   </div>
 </section>
 
 <section id="community" class="reveal">
   <h2>Growing Community</h2>
   <p>
-    In the digital age, a growing community is the true power behind every technology.
-    It transforms ideas into movements, users into builders, and followers into innovators.
-    Through connection, education, and collaboration, a community becomes stronger,
-    smarter, and unstoppable.
+    In the digital age, communities turn ideas into movements. Through collaboration,
+    education, and shared growth, we build a stronger and smarter digital future.
   </p>
-
-  <p><strong>Together we build. Together we grow.</strong></p>
+  <strong>Together we build. Together we grow.</strong>
 </section>
 
 <footer>
@@ -304,6 +281,21 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Page Transition Animation
+  const transition = document.getElementById("pageTransition");
+  window.addEventListener("load", () => {
+    setTimeout(() => transition.classList.add("hide"), 200);
+  });
+
+  // Scroll Reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
 
 </body>
