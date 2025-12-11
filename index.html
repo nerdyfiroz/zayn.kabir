@@ -2,14 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zayn Kabir | Math • AI • Blockchain • Marketing</title>
-
-  <meta name="description" content="Zayn Kabir is a Mathematics student, Blockchain tester, AI content creator and Digital Marketer from Bangladesh.">
-  <meta name="keywords" content="Zayn Kabir, Blockchain tester, Web3, AI, Digital Marketing, Bangladesh">
-  <meta name="author" content="Zayn Kabir">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="robots" content="index, follow">
+  <title>Zayn Kabir | Math • AI • Blockchain • Marketing</title>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
 
@@ -19,13 +14,9 @@
       font-family: Arial, sans-serif;
       background: radial-gradient(circle at top, #050816, #020617, #000);
       color: #e5e7eb;
-      line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    a { color: #38bdf8; text-decoration: none; }
-
-    /* Floating Top-Left Logo */
+    /* LOGO */
     .logo-box {
       position: fixed;
       top: 15px;
@@ -34,17 +25,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.45);
       padding: 6px 14px;
       border-radius: 12px;
       border: 1px solid #38bdf8;
       backdrop-filter: blur(6px);
-      transition: 0.3s;
-    }
-
-    .logo-box:hover {
-      transform: scale(1.05);
+      cursor: pointer;
     }
 
     .logo-box img {
@@ -52,57 +38,17 @@
       width: 32px;
       border-radius: 6px;
     }
+    .logo-text { font-size: 14px; font-weight: bold; color: #38bdf8; }
 
-    .logo-text {
-      color: #38bdf8;
-      font-weight: bold;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-    }
-
-    /* Background Patterns */
-    .math-chain-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image: repeating-linear-gradient(
-        45deg,
-        rgba(56,189,248,0.08) 0px,
-        rgba(56,189,248,0.08) 2px,
-        transparent 2px,
-        transparent 100px
-      );
-    }
-
-    .symbol-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      font-size: 26px;
-      opacity: 0.12;
-    }
-
-    .symbol-overlay span {
-      position: absolute;
-      animation: rise 18s linear infinite;
-    }
-
-    @keyframes rise {
-      from { transform: translateY(110vh); }
-      to { transform: translateY(-10vh); }
-    }
-
+    /* HEADER */
     header {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
     }
 
     header img.profile {
-      width: 120px;
       height: 120px;
-      object-fit: cover;
+      width: 120px;
       border-radius: 50%;
       border: 3px solid #38bdf8;
     }
@@ -110,34 +56,33 @@
     .icon-buttons {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       margin-top: 15px;
     }
 
-    .btn.icon {
-      width: 46px;
-      height: 46px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+    .btn {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: transparent;
       border: 1px solid #38bdf8;
       color: #38bdf8;
-      transition: 0.3s;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
     }
 
-    .btn.icon:hover { transform: scale(1.12); }
+    .btn:hover { transform: scale(1.1); }
 
     section {
       max-width: 900px;
       margin: auto;
       padding: 50px 20px;
-      border-bottom: 1px solid #1f2937;
     }
 
-    h2 { font-size: 24px; color: #38bdf8; margin-bottom: 15px; }
+    h2 { color: #38bdf8; }
 
     .grid {
       display: grid;
@@ -147,132 +92,92 @@
 
     .card {
       background: rgba(2,6,23,0.9);
-      padding: 16px;
-      border-radius: 12px;
       border: 1px solid #1f2937;
+      padding: 18px;
+      border-radius: 12px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 13px;
       color: #9ca3af;
     }
 
-    /* Scroll Reveal */
+    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(60px);
-      transition: 0.9s ease-out;
+      transition: .8s;
     }
-    .reveal.show {
+    .show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Page Transition */
+    /* PAGE TRANSITION */
     .page-transition {
       position: fixed;
       inset: 0;
       background: #020617;
-      z-index: 9999;
-      transform: translateY(0%);
-      transition: transform 0.7s ease-in-out;
+      z-index: 3000;
+      transform: translateY(0);
+      transition: transform .7s ease-in-out;
     }
     .page-transition.hide {
       transform: translateY(-100%);
     }
-
   </style>
 </head>
 
 <body>
 
-<!-- 🔥 TOP LEFT LOGO -->
+<!-- LOGO -->
 <div class="logo-box" onclick="window.location.reload()">
   <img src="logo.png" alt="Logo">
   <span class="logo-text">Zayn Kabir</span>
 </div>
 
-<div class="page-transition" id="pageTransition"></div>
-<div class="math-chain-bg"></div>
-
-<div class="symbol-overlay">
-  <span style="left:5%">∑</span>
-  <span style="left:15%">π</span>
-  <span style="left:25%">∞</span>
-  <span style="left:35%">√</span>
-  <span style="left:45%">θ</span>
-  <span style="left:55%">∫</span>
-  <span style="left:65%">₿</span>
-  <span style="left:75%">Ξ</span>
-  <span style="left:85%">⛓</span>
-  <span style="left:95%">Σ</span>
-</div>
+<div class="page-transition" id="transition"></div>
 
 <header>
-  <img src="profile.jpg" class="profile" alt="Zayn Kabir">
+  <img src="profile.jpg" class="profile">
   <h1>Zayn Kabir</h1>
   <p>Mathematics • AI • Blockchain • Digital Marketing</p>
-  <p><strong>“Together we build. Together we grow.”</strong></p>
 
   <div class="icon-buttons">
-
-    <!-- X -->
-    <a class="btn icon" href="https://x.com/platform_360" target="_blank">
-      <i class="fab fa-x-twitter"></i>
-    </a>
-
-    <!-- Discord (Copy Username) -->
-    <a class="btn icon" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');">
-      <i class="fab fa-discord"></i>
-    </a>
-
-    <!-- Telegram -->
-    <a class="btn icon" href="https://t.me/Nerdyfiroz" target="_blank">
-      <i class="fab fa-telegram"></i>
-    </a>
-
+    <a class="btn" href="https://x.com/platform_360" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    <a class="btn" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');"><i class="fab fa-discord"></i></a>
+    <a class="btn" href="https://t.me/Nerdyfiroz" target="_blank"><i class="fab fa-telegram"></i></a>
   </div>
 </header>
 
-<section id="about" class="reveal">
+<section class="reveal">
   <h2>About Me</h2>
-  <p>
-    I’m Zayn Kabir, a lifelong learner exploring the intersection of mathematics,
-    artificial intelligence, and blockchain. My mission is to transform complex
-    ideas into impactful creations and help build meaningful digital communities.
-  </p>
+  <p>I’m Zayn Kabir, exploring mathematics, AI, and blockchain to create meaningful digital innovations.</p>
 </section>
 
-<section id="skills" class="reveal">
+<section class="reveal">
   <h2>Skills</h2>
   <ul>
     <li>Advanced Mathematics</li>
     <li>Artificial Intelligence (AI)</li>
     <li>Blockchain & Web3</li>
-    <li>Digital Marketing & Growth Strategy</li>
-    <li>Data & Logical Analysis</li>
-    <li>Web3 Builder</li>
+    <li>Digital Marketing</li>
     <li>Community Building</li>
   </ul>
 </section>
 
-<section id="projects" class="reveal">
+<section class="reveal">
   <h2>Projects</h2>
   <div class="grid">
-    <div class="card"><h3>Web3 Testing</h3><p>Testing decentralized blockchain platforms.</p></div>
-    <div class="card"><h3>Community Manager</h3><p>Managing and scaling global Web3 communities.</p></div>
+    <div class="card"><h3>Web3 Testing</h3><p>Testing decentralized blockchain protocols.</p></div>
+    <div class="card"><h3>Community Manager</h3><p>Growing and managing Web3 communities.</p></div>
   </div>
 </section>
 
-<section id="community" class="reveal">
+<section class="reveal">
   <h2>Growing Community</h2>
-  <p>
-    In the digital age, communities turn ideas into movements. Through collaboration,
-    education, and shared growth, we build a stronger and smarter digital future.
-  </p>
-  <strong>Together we build. Together we grow.</strong>
+  <p>Communities turn ideas into movements. Together we build. Together we grow.</p>
 </section>
 
 <footer>
@@ -280,22 +185,20 @@
 </footer>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").innerHTML = new Date().getFullYear();
 
-  // Page Transition Animation
-  const transition = document.getElementById("pageTransition");
-  window.addEventListener("load", () => {
-    setTimeout(() => transition.classList.add("hide"), 200);
-  });
+  /* PAGE TRANSITION */
+  const t = document.getElementById("transition");
+  window.onload = () => { setTimeout(() => t.classList.add("hide"), 200); };
 
-  // Scroll Reveal
-  const observer = new IntersectionObserver(entries => {
+  /* SCROLL REVEAL */
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add("show");
     });
   }, { threshold: 0.15 });
 
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 </script>
 
 </body>
