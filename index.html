@@ -157,6 +157,35 @@
   color: #020617;
   transform: scale(1.05);
 }
+/* Dynamic Running Transition */
+.dynamic-run {
+  font-size: 15px;
+  color: #38bdf8;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: runText 8s linear infinite;
+  text-shadow: 0 0 12px rgba(56,189,248,0.45);
+}
+
+@keyframes runText {
+  0% { transform: translateX(-40px); opacity: 0.4; }
+  10% { opacity: 1; }
+  50% { transform: translateX(40px); opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(-40px); opacity: 0.4; }
+}
+
+/* 3D TILT EFFECT */
+.tilt {
+  transform-style: preserve-3d;
+  transition: 0.3s ease-out;
+}
+
+.tilt:hover {
+  transform: perspective(900px) rotateX(10deg) rotateY(-10deg) scale(1.03);
+  box-shadow: 0 0 25px rgba(56,189,248,0.35);
+}
 
   </style>
 </head>
@@ -172,24 +201,34 @@
 <div class="page-transition" id="transition"></div>
 
 <header>
-  <img src="profile.jpg" class="profile">
+  <img src="profile.jpg" class="profile tilt">
   <h1>Zayn Kabir</h1>
-  <p class="slide-left">Mathematics • AI • Blockchain • Digital Marketing</p>
+  <p class="dynamic-run">Mathematics • AI • Blockchain • Digital Marketing</p>
 
-  <div class="icon-buttons">
-    <a class="btn" href="https://x.com/platform_360" target="_blank"><i class="fab fa-x-twitter"></i></a>
-    <a class="btn" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');"><i class="fab fa-discord"></i></a>
-    <a class="btn" href="https://t.me/Nerdyfiroz" target="_blank"><i class="fab fa-telegram"></i></a>
-  </div>
+
+ <div class="icon-buttons">
+  <a class="btn tilt" href="https://x.com/platform_360" target="_blank">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+
+  <a class="btn tilt" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');">
+    <i class="fab fa-discord"></i>
+  </a>
+
+  <a class="btn tilt" href="https://t.me/Nerdyfiroz" target="_blank">
+    <i class="fab fa-telegram"></i>
+  </a>
+</div>
+
 </header>
 
-<section class="reveal">
+<section id="about" class="reveal tilt">
   <h2>About Me</h2>
   <p>I’m Zayn Kabir.I bridge the gap between theoretical mathematics and decentralized technologies.
     My work focuses on leveraging AI and Blockchain to architect scalable, secure, and impactful digital ecosystems.</p>
 </section>
 
-<section class="reveal">
+<section id="skills" class="reveal tilt">
   <h2>Skills</h2>
   <ul>
     <li>Advanced Mathematics</li>
@@ -200,16 +239,16 @@
   </ul>
 </section>
 
-<section id="projects" class="reveal">
+<section id="projects" class="reveal tilt">
   <h2>Projects</h2>
 
   <div class="grid">
-    <div class="card">
+    <div class="card tilt">
       <h3>Web3 Testing</h3>
       <p>I've tested so many projects such as zksync, arbitrum, aptos and so on.</p>
     </div>
 
-    <div class="card">
+    <div class="card tilt">
       <h3>Community Manager</h3>
       <p>Managing and scaling several global Web3 communities.</p>
 
@@ -219,8 +258,7 @@
   </div>
 </section>
 
-
-<section class="reveal">
+<section id="community" class="reveal tilt">
   <h2>Growing Community</h2>
   <p>Communities turn ideas into movements. Together we build. Together we grow.</p>
 </section>
