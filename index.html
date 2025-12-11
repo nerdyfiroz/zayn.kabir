@@ -140,6 +140,23 @@
     transform: translateX(0);
   }
 }
+.project-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: .3s;
+  font-size: 14px;
+}
+
+.project-btn:hover {
+  background: #38bdf8;
+  color: #020617;
+  transform: scale(1.05);
+}
 
   </style>
 </head>
@@ -183,13 +200,25 @@
   </ul>
 </section>
 
-<section class="reveal">
+<section id="projects" class="reveal">
   <h2>Projects</h2>
+
   <div class="grid">
-    <div class="card"><h3>Web3 Testing</h3><p>Testing decentralized blockchain protocols.</p></div>
-    <div class="card"><h3>Community Manager</h3><p>Growing and managing Web3 communities.</p></div>
+    <div class="card">
+      <h3>Web3 Testing</h3>
+      <p>I've tested so many projects such as zksync, arbiturm, aptos and so on.</p>
+    </div>
+
+    <div class="card">
+      <h3>Community Manager</h3>
+      <p>Managing and scaling several global Web3 communities.</p>
+
+      <!-- New Button -->
+      <a href="stela.html" class="project-btn">Community Manager of Stela Network →</a>
+    </div>
   </div>
 </section>
+
 
 <section class="reveal">
   <h2>Growing Community</h2>
