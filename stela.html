@@ -9,34 +9,163 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #020617;
+      background: radial-gradient(circle at top, #070b20, #020617, #000);
       color: #e5e7eb;
       line-height: 1.6;
-      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* Floating Animated Symbols (Cyber Effect) */
+    .symbol-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      font-size: 26px;
+      opacity: 0.12;
+    }
+
+    .symbol-overlay span {
+      position: absolute;
+      animation: floatUp 18s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(110vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    /* PAGE TRANSITION */
+    .page-transition {
+      position: fixed;
+      inset: 0;
+      background: #020617;
+      z-index: 9999;
+      transform: translateY(0);
+      transition: 0.7s ease-out;
+    }
+    .page-transition.hide {
+      transform: translateY(-100%);
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: 0.9s ease-out;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .container {
       max-width: 900px;
       margin: auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 12px 20px;
+      background: rgba(2,6,23,0.7);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #1f2937;
+      z-index: 2000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h3 {
+      color: #38bdf8;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .nav-btn:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: scale(1.05);
+    }
+
+    /* HEADER LOGO */
+    .logo-header {
+      text-align: center;
+      margin-top: 90px;
+      margin-bottom: 25px;
+    }
+
+    .logo-header img {
+      height: 90px;
+      filter: drop-shadow(0 0 10px #38bdf8);
+      animation: fadeIn 1.2s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     h1 {
       text-align: center;
       color: #38bdf8;
-      font-size: 32px;
-      margin-bottom: 20px;
+      font-size: 34px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 12px rgba(56,189,248,0.4);
     }
 
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 35px;
+      opacity: 0;
+      animation: fadeUp 1.2s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CARD STYLE */
     .card {
-      background: rgba(2,6,23,0.9);
+      background: rgba(2,6,23,0.7);
       border: 1px solid #1f2937;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 22px;
       margin-top: 20px;
+      backdrop-filter: blur(7px);
+      transition: 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 0 20px rgba(56,189,248,0.35);
     }
 
     h2 {
       color: #38bdf8;
+      font-size: 22px;
       margin-top: 10px;
     }
 
@@ -45,95 +174,140 @@
       margin: 12px 0;
     }
 
+    /* BUTTONS */
+    .whitepaper-btn,
     .back-btn {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 18px;
       padding: 10px 16px;
       border: 1px solid #38bdf8;
-      border-radius: 8px;
       color: #38bdf8;
+      border-radius: 8px;
       text-decoration: none;
       transition: .3s;
+      font-size: 14px;
     }
 
+    .whitepaper-btn:hover,
     .back-btn:hover {
       background: #38bdf8;
       color: #020617;
+      transform: scale(1.05);
     }
 
-    .whitepaper-btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 16px;
-      border: 1px solid #38bdf8;
-      color: #38bdf8;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: .3s;
-    }
-
-    .whitepaper-btn:hover {
-      background: #38bdf8;
-      color: #020617;
+    /* PREMIUM FOOTER */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #64748b;
+      border-top: 1px solid #1f2937;
+      background: rgba(2,6,23,0.4);
+      backdrop-filter: blur(6px);
     }
   </style>
 </head>
 
 <body>
 
+<!-- Floating Cyber Symbols -->
+<div class="symbol-overlay">
+  <span style="left:10%">Ξ</span>
+  <span style="left:20%">₿</span>
+  <span style="left:30%">∑</span>
+  <span style="left:40%">π</span>
+  <span style="left:50%">∞</span>
+  <span style="left:60%">∫</span>
+  <span style="left:70%">Σ</span>
+  <span style="left:80%">⛓</span>
+  <span style="left:90%">θ</span>
+</div>
+
+<div class="page-transition" id="transition"></div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h3>Stela Network</h3>
+  <a href="index.html" class="nav-btn">← Home</a>
+</div>
+
 <div class="container">
 
+  <!-- LOGO HEADER -->
+  <div class="logo-header">
+    <img src="stela-logo.png" alt="Stela Network Logo">
+  </div>
+
   <h1>Stela Network — Project Details</h1>
+  <p class="subtitle">Community Manager • Growth • Engagement • Web3 Ecosystem</p>
 
   <!-- PROJECT OVERVIEW -->
-  <div class="card">
+  <div class="card reveal">
     <h2>Overview</h2>
     <p>
       Stela Network is a mobile-first crypto mining ecosystem that allows users to mine STC tokens
-      directly from their smartphones. The project aims to make blockchain earning simple, accessible,
-      and available to everyone while building a strong global miner community.
+      directly from their smartphones. The project focuses on simplicity, accessibility, and 
+      building a large global crypto mining community.
     </p>
 
     <h2>My Role: Community Manager</h2>
     <ul>
       <li>Managing and growing a worldwide Web3 community.</li>
-      <li>Onboarding thousands of new users into the Stela ecosystem.</li>
-      <li>Running engagement activities, campaigns, and referral-based growth systems.</li>
-      <li>Providing user support and resolving issues quickly.</li>
-      <li>Working closely with the core team to implement community-driven improvements.</li>
+      <li>Onboarding new users into the Stela ecosystem.</li>
+      <li>Running events, growth campaigns, and referral systems.</li>
+      <li>Providing user support and educational guidance.</li>
+      <li>Collaborating with the core team to optimize engagement.</li>
     </ul>
-
-    <h2>Key Features of Stela Network</h2>
-    <ul>
-      <li>Mining via smartphone — no expensive hardware required.</li>
-      <li>Boosters and referrals to increase mining speed.</li>
-      <li>Conversion plan: STC → $STC once the network reaches 1M miners.</li>
-      <li>A growing global community with daily active participation.</li>
-    </ul>
-
-    <h2>Impact</h2>
-    <p>
-      My role strengthens user engagement, improves retention, and ensures smooth communication between
-      the community and the project team. This helps grow a trusted, active, and informed global miner base.
-    </p>
   </div>
 
-  <!-- WHITE PAPER SECTION -->
-  <div class="card">
-    <h2>Stela Network White Paper</h2>
+  <!-- FEATURES -->
+  <div class="card reveal">
+    <h2>Key Features of Stela Network</h2>
+    <ul>
+      <li>Mobile-only mining — no hardware needed.</li>
+      <li>Boosters & referral models increase earnings.</li>
+      <li>STC → $STC conversion planned at 1M miners.</li>
+      <li>Fast-growing global user base.</li>
+    </ul>
+  </div>
 
-    <p>You can access the official Stela Network White Paper here:</p>
+  <!-- WHITE PAPER -->
+  <div class="card reveal">
+    <h2>Official White Paper</h2>
+    <p>Open the official Stela Network Whitepaper here:</p>
 
     <a href="https://www.stela.network/whitepaper.html"
        target="_blank"
        class="whitepaper-btn">
-       Open Stela Network White Paper →
+       Open Stela White Paper →
     </a>
   </div>
 
-  <a href="index.html" class="back-btn">← Back to Home</a>
+  <!-- BACK BUTTON -->
+  <a href="index.html" class="back-btn reveal">← Back to Home</a>
 
 </div>
+
+<footer>
+  © 2025 — Stela Project Page by Zayn Kabir
+</footer>
+
+<!-- ANIMATION SCRIPT -->
+<script>
+  // Page Load Transition
+  const t = document.getElementById("transition");
+  window.onload = () => { setTimeout(() => t.classList.add("hide"), 200); };
+
+  // Scroll Reveal Animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add("show");
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
