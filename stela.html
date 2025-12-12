@@ -15,7 +15,7 @@
       overflow-x: hidden;
     }
 
-    /* Floating Animated Symbols (Cyber Effect) */
+    /* Floating Animated Symbols */
     .symbol-overlay {
       position: fixed;
       inset: 0;
@@ -35,7 +35,7 @@
       to { transform: translateY(-10vh); }
     }
 
-    /* PAGE TRANSITION */
+    /* Page Transition */
     .page-transition {
       position: fixed;
       inset: 0;
@@ -48,7 +48,7 @@
       transform: translateY(-100%);
     }
 
-    /* SCROLL REVEAL */
+    /* Scroll Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(60px);
@@ -146,7 +146,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* CARD STYLE */
+    /* Cards */
     .card {
       background: rgba(2,6,23,0.7);
       border: 1px solid #1f2937;
@@ -174,7 +174,7 @@
       margin: 12px 0;
     }
 
-    /* BUTTONS */
+    /* Buttons */
     .whitepaper-btn,
     .back-btn {
       display: inline-block;
@@ -195,7 +195,7 @@
       transform: scale(1.05);
     }
 
-    /* PREMIUM FOOTER */
+    /* Footer */
     footer {
       margin-top: 60px;
       text-align: center;
@@ -206,68 +206,40 @@
       background: rgba(2,6,23,0.4);
       backdrop-filter: blur(6px);
     }
-    .stela-info-btn,
-.download-btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 10px;
-  background: #38bdf8;
-  color: #020617;
-  text-decoration: none;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  margin: 20px auto;
-}
 
-.stela-info-btn:hover,
-.download-btn:hover {
-  background: #0ea5e9;
-  transform: scale(1.05);
-}
-  <div class="store-buttons">
-  <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" target="_blank" class="store-btn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-  </a>
-
-  <a href="https://apps.apple.com/us/app/stela-network/id6753020621" target="_blank" class="store-btn">
-    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-  </a>
-</div>
+    /* App Store Buttons */
     .store-buttons {
-  display: flex;
-  gap: 18px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
+      display: flex;
+      gap: 18px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
 
-.store-btn {
-  display: inline-block;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 10px 14px;
-  border-radius: 12px;
-  transition: 0.3s;
-  backdrop-filter: blur(6px);
-}
+    .store-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: 0.3s;
+      backdrop-filter: blur(6px);
+    }
 
-.store-btn:hover {
-  transform: scale(1.05);
-  border-color: #38bdf8;
-  box-shadow: 0 0 15px rgba(56,189,248,0.25);
-}
+    .store-btn:hover {
+      transform: scale(1.05);
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56,189,248,0.25);
+    }
 
-.store-btn img {
-  height: 40px;
-}
+    .store-btn img {
+      height: 40px;
+    }
 
   </style>
 </head>
 
 <body>
 
-<!-- Floating Cyber Symbols -->
+<!-- Floating Symbols -->
 <div class="symbol-overlay">
   <span style="left:10%">Ξ</span>
   <span style="left:20%">₿</span>
@@ -290,7 +262,7 @@
 
 <div class="container">
 
-  <!-- LOGO HEADER -->
+  <!-- HEADER -->
   <div class="logo-header">
     <img src="stela-logo.png" alt="Stela Network Logo">
   </div>
@@ -298,7 +270,7 @@
   <h1>Stela Network — Project Details</h1>
   <p class="subtitle">Community Manager • Growth • Engagement • Web3 Ecosystem</p>
 
-  <!-- PROJECT OVERVIEW -->
+  <!-- OVERVIEW -->
   <div class="card reveal">
     <h2>Overview</h2>
     <p>
@@ -345,20 +317,39 @@
 
 </div>
 
-<!-- STELA extra info button (added here at bottom before footer) -->
-<button class="stela-info-btn">📘 More About STELA</button>
+<!-- STELA INFO SECTION ADDED CLEANLY -->
+<section id="stela-info" class="reveal" style="max-width:900px;margin:auto;padding:40px 20px;">
+  <h2>🚀 STELA NETWORK - Revolutionary Mining App!</h2>
+
+  <p>
+    💰 Use my code <strong>ZAV4GL</strong> and get <strong>10 STC bonus instantly!</strong><br>
+    Mine STC tokens automatically 24/7 and earn passive income while you sleep.<br>
+    Build your team, invite friends and multiply your earnings together.
+  </p>
+
+  <p>⚡ Join the future of mining today!</p>
+
+  <div class="store-buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" target="_blank" class="store-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
+    </a>
+
+    <a href="https://apps.apple.com/us/app/stela-network/id6753020621" target="_blank" class="store-btn">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
+    </a>
+  </div>
+</section>
 
 <footer>
-    <p>&copy; 2024 Zayn Kabir | All Rights Reserved</p>
+  <p>&copy; 2024 Zayn Kabir | All Rights Reserved</p>
 </footer>
 
-<!-- ANIMATION SCRIPT -->
 <script>
-  // Page Load Transition
+  // Page Transition
   const t = document.getElementById("transition");
   window.onload = () => { setTimeout(() => t.classList.add("hide"), 200); };
 
-  // Scroll Reveal Animation
+  // Scroll Reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if(entry.isIntersecting) entry.target.classList.add("show");
@@ -367,49 +358,6 @@
 
   document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
-<section id="stela-info" class="reveal">
-  <h2>🚀 STELA NETWORK - Revolutionary Mining App!</h2>
 
-  <p>
-    💰 Use my code <strong>ZAV4GL</strong> and get <strong>10 STC bonus instantly!</strong><br>
-    Mine STC tokens automatically 24/7 and earn passive income while you sleep.<br>
-    Build your team, invite friends and multiply your earnings together.
-  </p>
-
-  <p>⚡ Join the future of mining today!</p>
-
-  <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" 
-     class="download-btn" target="_blank">
-     👉 Download STELA App
-  </a>
-</section>
-  <section id="stela-info" class="reveal">
-  <h2>🚀 STELA NETWORK - Revolutionary Mining App!</h2>
-
-  <p>
-    💰 Use my code <strong>ZAV4GL</strong> and get <strong>10 STC bonus instantly!</strong><br>
-    Mine STC tokens automatically 24/7 and earn passive income while you sleep.<br>
-    Build your team, invite friends and multiply your earnings together.
-  </p>
-
-  <p>⚡ Join the future of mining today!</p>
-
-  <!-- ⭐ Paste Store Buttons HERE -->
-  <div class="store-buttons">
-    <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" target="_blank" class="store-btn">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-    </a>
-
-    <a href="https://apps.apple.com/us/app/stela-network/id6753020621" target="_blank" class="store-btn">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-    </a>
-  </div>
-
-</section>
-<script>
-  document.querySelector(".stela-info-btn").addEventListener("click", () => {
-    document.getElementById("stela-info").scrollIntoView({ behavior: "smooth" });
-  });
-</script>
 </body>
 </html>
