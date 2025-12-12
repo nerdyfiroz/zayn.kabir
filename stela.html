@@ -226,6 +226,42 @@
   background: #0ea5e9;
   transform: scale(1.05);
 }
+  <div class="store-buttons">
+  <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" target="_blank" class="store-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+  </a>
+
+  <a href="https://apps.apple.com/us/app/stela-network/id6753020621" target="_blank" class="store-btn">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+  </a>
+</div>
+    .store-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.store-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: 0.3s;
+  backdrop-filter: blur(6px);
+}
+
+.store-btn:hover {
+  transform: scale(1.05);
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56,189,248,0.25);
+}
+
+.store-btn img {
+  height: 40px;
+}
+
   </style>
 </head>
 
@@ -346,6 +382,29 @@
      class="download-btn" target="_blank">
      👉 Download STELA App
   </a>
+</section>
+  <section id="stela-info" class="reveal">
+  <h2>🚀 STELA NETWORK - Revolutionary Mining App!</h2>
+
+  <p>
+    💰 Use my code <strong>ZAV4GL</strong> and get <strong>10 STC bonus instantly!</strong><br>
+    Mine STC tokens automatically 24/7 and earn passive income while you sleep.<br>
+    Build your team, invite friends and multiply your earnings together.
+  </p>
+
+  <p>⚡ Join the future of mining today!</p>
+
+  <!-- ⭐ Paste Store Buttons HERE -->
+  <div class="store-buttons">
+    <a href="https://play.google.com/store/apps/details?id=com.stelanetwork.app" target="_blank" class="store-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+    </a>
+
+    <a href="https://apps.apple.com/us/app/stela-network/id6753020621" target="_blank" class="store-btn">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+    </a>
+  </div>
+
 </section>
 <script>
   document.querySelector(".stela-info-btn").addEventListener("click", () => {
