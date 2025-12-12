@@ -14,57 +14,86 @@
       font-family: Arial, sans-serif;
       background: radial-gradient(circle at top, #050816, #020617, #000);
       color: #e5e7eb;
+      overflow-x: hidden;
     }
 
-    /* LOGO */
-    .logo-box {
+    /* NAVBAR */
+    .navbar {
       position: fixed;
-      top: 15px;
-      left: 20px;
-      z-index: 2000;
+      top: 0;
+      width: 100%;
+      z-index: 3000;
+      padding: 12px 25px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
-      background: rgba(0,0,0,0.45);
-      padding: 6px 14px;
-      border-radius: 12px;
-      border: 1px solid #38bdf8;
-      backdrop-filter: blur(6px);
-      cursor: pointer;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(56,189,248,0.35);
     }
 
-    .logo-box img {
-      height: 32px;
-      width: 32px;
-      border-radius: 6px;
+    .navbar h3 {
+      margin: 0;
+      color: #38bdf8;
+      font-size: 18px;
+      letter-spacing: 1px;
     }
-    .logo-text { font-size: 14px; font-weight: bold; color: #38bdf8; }
+    .nav-links a {
+      margin-left: 18px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: .3s;
+    }
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
 
-    /* HEADER */
+    /* HERO SECTION */
     header {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 120px 20px 50px;
     }
 
     header img.profile {
-      height: 120px;
-      width: 120px;
+      height: 130px;
+      width: 130px;
       border-radius: 50%;
       border: 3px solid #38bdf8;
+      box-shadow: 0 0 22px rgba(56,189,248,0.35);
     }
 
+    header h1 {
+      margin-top: 18px;
+      font-size: 34px;
+      color: #38bdf8;
+      text-shadow: 0 0 12px rgba(56,189,248,0.4);
+    }
+
+    .dynamic-title {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #94a3b8;
+      animation: fadeSlide 2s infinite alternate;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0.6; transform: translateY(5px); }
+      to   { opacity: 1;   transform: translateY(0); }
+    }
+
+    /* SOCIAL ICONS */
     .icon-buttons {
       display: flex;
       justify-content: center;
       gap: 12px;
       margin-top: 15px;
     }
-
     .btn {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: transparent;
+      background: rgba(2,6,23,0.4);
       border: 1px solid #38bdf8;
       color: #38bdf8;
       font-size: 18px;
@@ -73,34 +102,122 @@
       justify-content: center;
       transition: .3s;
     }
+    .btn:hover {
+      transform: scale(1.1);
+      background: #38bdf8;
+      color: #020617;
+    }
 
-    .btn:hover { transform: scale(1.1); }
-
+    /* SECTIONS */
     section {
       max-width: 900px;
       margin: auto;
-      padding: 50px 20px;
+      padding: 70px 20px;
+    }
+    h2 {
+      color: #38bdf8;
+      font-size: 26px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(56,189,248,0.35);
     }
 
-    h2 { color: #38bdf8; }
+    /* SKILLS BADGES */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .badge {
+      background: rgba(2,6,23,0.8);
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      font-size: 14px;
+      transition: .3s;
+    }
+    .badge:hover {
+      border-color: #38bdf8;
+      transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(56,189,248,0.35);
+    }
 
+    /* PROJECT CARDS */
     .grid {
       display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .card {
       background: rgba(2,6,23,0.9);
       border: 1px solid #1f2937;
-      padding: 18px;
-      border-radius: 12px;
+      padding: 20px;
+      border-radius: 14px;
+      transition: .35s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 0 25px rgba(56,189,248,0.35);
     }
 
+    .project-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: .3s;
+      font-size: 14px;
+    }
+    .project-btn:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: scale(1.05);
+    }
+
+    /* COMMUNITY */
+    #community p {
+      max-width: 650px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+
+    /* EXPLORE MORE */
+    .explore-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(56,189,248,0.3);
+      background: rgba(2,6,23,0.55);
+      text-align: center;
+    }
+
+    .explore-btn {
+      margin-top: 10px;
+      display: inline-block;
+      padding: 10px 18px;
+      background: #38bdf8;
+      color: #020617;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+    .explore-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       color: #9ca3af;
+      margin-top: 60px;
+      border-top: 1px solid #1f2937;
     }
 
     /* SCROLL REVEAL */
@@ -119,83 +236,27 @@
       position: fixed;
       inset: 0;
       background: #020617;
-      z-index: 3000;
+      z-index: 4000;
       transform: translateY(0);
       transition: transform .7s ease-in-out;
     }
     .page-transition.hide {
       transform: translateY(-100%);
     }
-    /* Slide text from left to right */
-.slide-left {
-  opacity: 0;
-  transform: translateX(-50px);
-  animation: slideLeft 1.2s ease-out forwards;
-  animation-delay: 0.3s;
-}
-
-@keyframes slideLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-.project-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 16px;
-  color: #38bdf8;
-  border: 1px solid #38bdf8;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: .3s;
-  font-size: 14px;
-}
-
-.project-btn:hover {
-  background: #38bdf8;
-  color: #020617;
-  transform: scale(1.05);
-}
-/* Dynamic Running Transition */
-.dynamic-run {
-  font-size: 15px;
-  color: #38bdf8;
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-  animation: runText 8s linear infinite;
-  text-shadow: 0 0 12px rgba(56,189,248,0.45);
-}
-
-@keyframes runText {
-  0% { transform: translateX(-40px); opacity: 0.4; }
-  10% { opacity: 1; }
-  50% { transform: translateX(40px); opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(-40px); opacity: 0.4; }
-}
-
-/* 3D TILT EFFECT */
-.tilt {
-  transform-style: preserve-3d;
-  transition: 0.3s ease-out;
-}
-
-.tilt:hover {
-  transform: perspective(900px) rotateX(10deg) rotateY(-10deg) scale(1.03);
-  box-shadow: 0 0 25px rgba(56,189,248,0.35);
-}
-
   </style>
 </head>
 
 <body>
 
-<!-- LOGO -->
-<div class="logo-box" onclick="window.location.reload()">
-  <img src="logo.png" alt="Logo">
-  <span class="logo-text">Zayn Kabir</span>
+<!-- NAVBAR -->
+<div class="navbar">
+  <h3>Zayn Kabir</h3>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#community">Community</a>
+  </div>
 </div>
 
 <div class="page-transition" id="transition"></div>
@@ -203,40 +264,37 @@
 <header>
   <img src="profile.jpg" class="profile tilt">
   <h1>Zayn Kabir</h1>
-  <p class="dynamic-run">Mathematics • AI • Blockchain • Digital Marketing</p>
 
+  <p class="dynamic-title">Mathematics • AI • Blockchain • Digital Marketing</p>
 
- <div class="icon-buttons">
-  <a class="btn tilt" href="https://x.com/platform_360" target="_blank">
-    <i class="fab fa-x-twitter"></i>
-  </a>
-
-  <a class="btn tilt" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');">
-    <i class="fab fa-discord"></i>
-  </a>
-
-  <a class="btn tilt" href="https://t.me/Nerdyfiroz" target="_blank">
-    <i class="fab fa-telegram"></i>
-  </a>
-</div>
-
+  <div class="icon-buttons">
+    <a class="btn tilt" href="https://x.com/platform_360" target="_blank">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+    <a class="btn tilt" href="#" onclick="navigator.clipboard.writeText('zaynkabir'); alert('Discord username copied!');">
+      <i class="fab fa-discord"></i>
+    </a>
+    <a class="btn tilt" href="https://t.me/Nerdyfiroz" target="_blank">
+      <i class="fab fa-telegram"></i>
+    </a>
+  </div>
 </header>
 
 <section id="about" class="reveal tilt">
   <h2>About Me</h2>
-  <p>I’m Zayn Kabir.I bridge the gap between theoretical mathematics and decentralized technologies.
-    My work focuses on leveraging AI and Blockchain to architect scalable, secure, and impactful digital ecosystems.</p>
+  <p>I’m Zayn Kabir. I bridge the gap between theoretical mathematics and decentralized technologies.<br><br>
+  My work focuses on leveraging AI and Blockchain to architect scalable, secure, and impactful digital ecosystems.</p>
 </section>
 
 <section id="skills" class="reveal tilt">
   <h2>Skills</h2>
-  <ul>
-    <li>Advanced Mathematics</li>
-    <li>Artificial Intelligence (AI)</li>
-    <li>Blockchain & Web3</li>
-    <li>Digital Marketing</li>
-    <li>Community Building</li>
-  </ul>
+  <div class="badges">
+    <span class="badge">Advanced Mathematics</span>
+    <span class="badge">Artificial Intelligence (AI)</span>
+    <span class="badge">Blockchain & Web3</span>
+    <span class="badge">Digital Marketing</span>
+    <span class="badge">Community Building</span>
+  </div>
 </section>
 
 <section id="projects" class="reveal tilt">
@@ -245,14 +303,13 @@
   <div class="grid">
     <div class="card tilt">
       <h3>Web3 Testing</h3>
-      <p>I've tested so many projects such as zksync, arbitrum, aptos and so on.</p>
+      <p>I've tested so many projects such as ZKSync, Arbitrum, Aptos, and more.</p>
     </div>
 
     <div class="card tilt">
       <h3>Community Manager</h3>
       <p>Managing and scaling several global Web3 communities.</p>
 
-      <!-- New Button -->
       <a href="stela.html" class="project-btn">Community Manager of Stela Network →</a>
     </div>
   </div>
@@ -261,6 +318,12 @@
 <section id="community" class="reveal tilt">
   <h2>Growing Community</h2>
   <p>Communities turn ideas into movements. Together we build. Together we grow.</p>
+
+  <div class="explore-box">
+    Want to explore more?
+    <br>
+    <a href="stela.html" class="explore-btn">Explore My Work →</a>
+  </div>
 </section>
 
 <footer>
