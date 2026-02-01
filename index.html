@@ -402,6 +402,110 @@
       transform: translateY(0);
     }
 
+    /* CINEMATIC LOADING SCREEN */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+
+    .loading-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .loader-ring {
+      position: absolute;
+      border: 3px solid transparent;
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      animation: spin 1.5s linear infinite;
+    }
+
+    .loader-ring:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 0;
+      left: 0;
+      animation-duration: 2s;
+    }
+
+    .loader-ring:nth-child(2) {
+      width: 160px;
+      height: 160px;
+      top: 20px;
+      left: 20px;
+      border-top-color: #8b5cf6;
+      animation-duration: 1.5s;
+    }
+
+    .loader-ring:nth-child(3) {
+      width: 120px;
+      height: 120px;
+      top: 40px;
+      left: 40px;
+      border-top-color: #ec4899;
+      animation-duration: 1s;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      margin-top: 250px;
+      color: #38bdf8;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .loading-progress {
+      margin-top: 20px;
+      width: 300px;
+      height: 4px;
+      background: rgba(56,189,248,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #8b5cf6, #ec4899);
+      background-size: 200% 100%;
+      animation: progressAnimation 2s ease-in-out forwards, shimmer 1.5s linear infinite;
+    }
+
+    @keyframes progressAnimation {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
     /* PAGE TRANSITION */
     .page-transition {
       position: fixed;
@@ -419,6 +523,19 @@
 
 <body>
 
+<!-- CINEMATIC LOADING SCREEN -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loader-container">
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+  </div>
+  <div class="loading-text">ZAYN KABIR</div>
+  <div class="loading-progress">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
 <!-- NAVBAR -->
 <div class="navbar">
   <h3>Zayn Kabir</h3>
@@ -427,7 +544,6 @@
     <a href="#skills">Skills</a>
     <a href="#recent-work">Recent Work</a>
     <a href="#projects">Projects</a>
-    <a href="#community">Community</a>
   </div>
 </div>
 
@@ -494,9 +610,6 @@
       <span class="tag">Responsive Design</span>
     </div>
     <div class="work-links">
-      <a href="https://github.com/nerdyfiroz/zayn.kabir" target="_blank" class="work-link">
-        <i class="fab fa-github"></i> View Code
-      </a>
       <a href="https://nerdyfiroz.github.io/zayn.kabir/" target="_blank" class="work-link">
         <i class="fas fa-external-link-alt"></i> Live Demo
       </a>
@@ -513,9 +626,6 @@
       <span class="tag">Community</span>
     </div>
     <div class="work-links">
-      <a href="https://github.com/nerdyfiroz/zayn.kabir/blob/main/stela.html" target="_blank" class="work-link">
-        <i class="fab fa-github"></i> View Code
-      </a>
       <a href="stela.html" class="work-link">
         <i class="fas fa-external-link-alt"></i> View Page
       </a>
@@ -530,11 +640,6 @@
       <span class="tag">Web3.js</span>
       <span class="tag">APIs</span>
       <span class="tag">Dashboard</span>
-    </div>
-    <div class="work-links">
-      <a href="https://github.com/nerdyfiroz" target="_blank" class="work-link">
-        <i class="fab fa-github"></i> View Profile
-      </a>
     </div>
   </div>
 
@@ -612,17 +717,6 @@
   </div>
 </section>
 
-<section id="community" class="reveal tilt">
-  <h2>Growing Community</h2>
-  <p>Communities turn ideas into movements. Together we build. Together we grow.</p>
-
-  <div class="explore-box">
-    Want to explore more?
-    <br>
-    <a href="stela.html" class="explore-btn">Explore My Work →</a>
-  </div>
-</section>
-
 </div><!-- End content-wrapper -->
 
 <footer>
@@ -631,6 +725,19 @@
 
 <script>
   document.getElementById("year").innerHTML = new Date().getFullYear();
+
+  /* CINEMATIC LOADING SCREEN */
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.classList.add('fade-out');
+      
+      // Remove from DOM after fade out
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 1000);
+    }, 2000); // Show loading for 2 seconds
+  });
 
   /* PAGE TRANSITION */
   const t = document.getElementById("transition");
