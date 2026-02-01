@@ -15,6 +15,90 @@
       background: radial-gradient(circle at top, #050816, #020617, #000);
       color: #e5e7eb;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ANIMATED BACKGROUND */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      background: linear-gradient(45deg, #020617, #0f172a, #1e1b4b, #0f172a, #020617);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .particle:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(56,189,248,0.15), transparent);
+      top: 20%;
+      left: 10%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .particle:nth-child(2) {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(139,92,246,0.1), transparent);
+      top: 60%;
+      left: 80%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    .particle:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(236,72,153,0.12), transparent);
+      top: 80%;
+      left: 20%;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .particle:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(56,189,248,0.08), transparent);
+      top: 40%;
+      left: 60%;
+      animation: float 12s ease-in-out infinite reverse;
+    }
+
+    .particle:nth-child(5) {
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle, rgba(167,139,250,0.1), transparent);
+      top: 10%;
+      left: 70%;
+      animation: float 9s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -20px) scale(1.1); }
+      50% { transform: translate(-15px, -40px) scale(0.9); }
+      75% { transform: translate(-30px, -15px) scale(1.05); }
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
     }
 
     /* NAVBAR */
@@ -22,7 +106,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 3000;
+      z-index: 5000;
       padding: 12px 25px;
       display: flex;
       justify-content: space-between;
@@ -162,6 +246,93 @@
       box-shadow: 0 0 25px rgba(56,189,248,0.35);
     }
 
+    /* RECENT WORK */
+    .work-item {
+      background: rgba(2,6,23,0.85);
+      border: 1px solid #1f2937;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      transition: .35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #38bdf8, #8b5cf6);
+      opacity: 0;
+      transition: .35s;
+    }
+
+    .work-item:hover::before {
+      opacity: 1;
+    }
+
+    .work-item:hover {
+      transform: translateX(8px);
+      border-color: #38bdf8;
+      box-shadow: 0 0 25px rgba(56,189,248,0.25);
+    }
+
+    .work-item h3 {
+      color: #38bdf8;
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+
+    .work-item p {
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .tag {
+      background: rgba(56,189,248,0.1);
+      color: #38bdf8;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      border: 1px solid rgba(56,189,248,0.3);
+    }
+
+    .work-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: .3s;
+      font-size: 14px;
+    }
+
+    .work-link:hover {
+      background: #38bdf8;
+      color: #020617;
+      transform: scale(1.05);
+    }
+
     .project-btn {
       display: inline-block;
       margin-top: 12px;
@@ -254,12 +425,24 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
+    <a href="#recent-work">Recent Work</a>
     <a href="#projects">Projects</a>
     <a href="#community">Community</a>
   </div>
 </div>
 
 <div class="page-transition" id="transition"></div>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="animated-bg">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<div class="content-wrapper">
 
 <header>
   <img src="profile.jpg" class="profile tilt">
@@ -294,6 +477,65 @@
     <span class="badge">Blockchain & Web3</span>
     <span class="badge">Digital Marketing</span>
     <span class="badge">Community Building</span>
+  </div>
+</section>
+
+<section id="recent-work" class="reveal tilt">
+  <h2>Recent Work</h2>
+  <p style="color: #94a3b8; margin-bottom: 30px;">Here are some of the websites and projects I've built from scratch using modern web technologies.</p>
+  
+  <div class="work-item">
+    <h3>Zayn Kabir Portfolio</h3>
+    <p>A modern, responsive portfolio website showcasing my expertise in Mathematics, AI, Blockchain, and Digital Marketing. Features smooth animations, glassmorphism design, and optimized performance.</p>
+    <div class="work-tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Responsive Design</span>
+    </div>
+    <div class="work-links">
+      <a href="https://github.com/nerdyfiroz/zayn.kabir" target="_blank" class="work-link">
+        <i class="fab fa-github"></i> View Code
+      </a>
+      <a href="https://nerdyfiroz.github.io/zayn.kabir/" target="_blank" class="work-link">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    </div>
+  </div>
+
+  <div class="work-item">
+    <h3>Stela Network Community Page</h3>
+    <p>A dedicated landing page for Stela Network community, featuring modern UI/UX design principles, social integration, and community engagement features.</p>
+    <div class="work-tags">
+      <span class="tag">HTML5</span>
+      <span class="tag">CSS3</span>
+      <span class="tag">Web3</span>
+      <span class="tag">Community</span>
+    </div>
+    <div class="work-links">
+      <a href="https://github.com/nerdyfiroz/zayn.kabir/blob/main/stela.html" target="_blank" class="work-link">
+        <i class="fab fa-github"></i> View Code
+      </a>
+      <a href="stela.html" class="work-link">
+        <i class="fas fa-external-link-alt"></i> View Page
+      </a>
+    </div>
+  </div>
+
+  <div class="work-item">
+    <h3>Web3 Dashboard Interface</h3>
+    <p>Interactive dashboard for tracking Web3 projects and blockchain analytics. Built with modern JavaScript and features real-time data visualization.</p>
+    <div class="work-tags">
+      <span class="tag">JavaScript</span>
+      <span class="tag">Web3.js</span>
+      <span class="tag">APIs</span>
+      <span class="tag">Dashboard</span>
+    </div>
+    <div class="work-links">
+      <a href="https://github.com/nerdyfiroz" target="_blank" class="work-link">
+        <i class="fab fa-github"></i> View Profile
+      </a>
+    </div>
   </div>
 </section>
 
@@ -332,6 +574,8 @@
     <a href="stela.html" class="explore-btn">Explore My Work →</a>
   </div>
 </section>
+
+</div><!-- End content-wrapper -->
 
 <footer>
   © <span id="year"></span> Zayn Kabir — All rights reserved.
