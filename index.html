@@ -7,11 +7,14 @@
   <title>Zayn Kabir | Math • AI • Blockchain • Marketing</title>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       background: radial-gradient(circle at top, #050816, #020617, #000);
       color: #e5e7eb;
       overflow-x: hidden;
@@ -226,24 +229,136 @@
       box-shadow: 0 0 15px rgba(56,189,248,0.35);
     }
 
-    /* PROJECT CARDS */
+    /* PROJECT CARDS - GLASSMORPHISM DESIGN */
     .grid {
       display: grid;
-      gap: 22px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 30px;
     }
 
     .card {
-      background: rgba(2,6,23,0.9);
-      border: 1px solid #1f2937;
-      padding: 20px;
-      border-radius: 14px;
-      transition: .35s;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 28px;
+      border-radius: 16px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(139,92,246,0.05));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
     .card:hover {
-      transform: translateY(-8px);
-      border-color: #38bdf8;
-      box-shadow: 0 0 25px rgba(56,189,248,0.35);
+      transform: translateY(-12px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15),
+                  0 0 40px rgba(139, 92, 246, 0.1),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .card h3 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .card p {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin: 0 0 18px 0;
+      flex-grow: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .card-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(56, 189, 248, 0.08);
+      color: #7dd3fc;
+      transition: all 0.3s ease;
+    }
+
+    .card-tag:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .card-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .demo-btn {
+      flex: 1;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .demo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+    }
+
+    .demo-btn:hover::before {
+      opacity: 1;
     }
 
     /* RECENT WORK */
@@ -697,22 +812,35 @@
 
   <div class="grid">
     <div class="card tilt">
-      <h3>Web3 Testing</h3>
-      <p>
-  I've tested so many projects such as 
-  <a href="https://zksync.io" target="_blank" class="project-link">ZKSync</a>, 
-  <a href="https://arbitrum.io" target="_blank" class="project-link">Arbitrum</a>, 
-  <a href="https://aptoslabs.com" target="_blank" class="project-link">Aptos</a>,
-  and more.
-</p>
-
+      <h3>Web3 Testing & QA</h3>
+      <p>Comprehensive testing and quality assurance across multiple Layer 2 solutions and blockchain protocols including ZKSync, Arbitrum, and Aptos.</p>
+      <div class="card-tags">
+        <span class="card-tag">Web3</span>
+        <span class="card-tag">Blockchain</span>
+        <span class="card-tag">Testing</span>
+        <span class="card-tag">QA</span>
+      </div>
+      <div class="card-buttons">
+        <a href="https://zksync.io" target="_blank" class="demo-btn">
+          <i class="fas fa-external-link-alt"></i> Learn More
+        </a>
+      </div>
     </div>
 
     <div class="card tilt">
-      <h3>Community Manager</h3>
-      <p>Managing and scaling several global Web3 communities.</p>
-
-      <a href="stela.html" class="project-btn">Community Manager of Stela Network →</a>
+      <h3>Community Manager - Stela</h3>
+      <p>Scaling and managing global Web3 communities, fostering engagement, and building vibrant ecosystems around innovative blockchain projects.</p>
+      <div class="card-tags">
+        <span class="card-tag">Community</span>
+        <span class="card-tag">Web3</span>
+        <span class="card-tag">Strategy</span>
+        <span class="card-tag">Growth</span>
+      </div>
+      <div class="card-buttons">
+        <a href="stela.html" class="demo-btn">
+          <i class="fas fa-arrow-right"></i> View Community
+        </a>
+      </div>
     </div>
   </div>
 </section>
