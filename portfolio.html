@@ -27,9 +27,9 @@
       padding: 0;
     }
 
-    /* BUNII-STYLE SPRING SCROLLING SYSTEM */
+    /* BUNII-STYLE SMOOTH SCROLLING SYSTEM */
     html {
-      scroll-behavior: auto; /* Handled smoothly by spring physics engine */
+      scroll-behavior: smooth !important;
       overflow-x: clip;
       scrollbar-width: thin;
       scrollbar-color: rgba(56, 189, 248, 0.35) rgba(2, 6, 23, 0.8);
@@ -1069,7 +1069,7 @@
     });
 
     // ========================================================
-    // BUNII-STYLE PHYSICS SPRING SMOOTH SCROLL SYSTEM
+    // BUNII-STYLE SMOOTH SCROLL SYSTEM
     // Parameters calibrated to bunii.fun:
     // stiffness: 90, damping: 22, mass: 0.5
     // ========================================================
@@ -1079,24 +1079,19 @@
         this.damping = 22;
         this.mass = 0.5;
 
-        this.currentY = window.scrollY;
-        this.targetY = window.scrollY;
-        this.velocity = 0;
+        this.currentProgress = 0;
+        this.targetProgress = 0;
+        this.progressVelocity = 0;
         this.isTicking = false;
         this.lastTime = performance.now();
         this.progressBar = document.getElementById('scrollProgressBar');
-
-        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         this.init();
       }
 
       init() {
-        if (this.reducedMotion) return;
-
-        window.addEventListener('wheel', (e) => this.onWheel(e), { passive: false });
-        window.addEventListener('scroll', () => this.onNativeScroll(), { passive: true });
-        window.addEventListener('resize', () => this.updateBounds(), { passive: true });
+        window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+        window.addEventListener('resize', () => this.onScroll(), { passive: true });
 
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener('click', (e) => {
@@ -1106,69 +1101,29 @@
             if (targetEl) {
               e.preventDefault();
               const offsetTop = targetEl.getBoundingClientRect().top + window.scrollY - 85;
-              this.scrollTo(offsetTop);
+              window.scrollTo({
+                top: Math.max(0, offsetTop),
+                behavior: 'smooth'
+              });
             }
           });
         });
 
-        this.updateProgress();
+        this.onScroll();
       }
 
       getMaxScroll() {
-        return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        return Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       }
 
-      onWheel(e) {
+      onScroll() {
         const maxScroll = this.getMaxScroll();
-        if (maxScroll <= 0) return;
-
-        if (e.ctrlKey || e.metaKey) return;
-
-        e.preventDefault();
-
-        let delta = e.deltaY;
-        if (e.deltaMode === 1) delta *= 36;
-        else if (e.deltaMode === 2) delta *= window.innerHeight;
-
-        this.targetY = Math.min(Math.max(this.targetY + delta, 0), maxScroll);
+        this.targetProgress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
 
         if (!this.isTicking) {
           this.isTicking = true;
           this.lastTime = performance.now();
           requestAnimationFrame((t) => this.tick(t));
-        }
-      }
-
-      onNativeScroll() {
-        if (!this.isTicking) {
-          this.currentY = window.scrollY;
-          this.targetY = window.scrollY;
-          this.updateProgress();
-        }
-      }
-
-      scrollTo(targetPosition) {
-        const maxScroll = this.getMaxScroll();
-        this.targetY = Math.min(Math.max(targetPosition, 0), maxScroll);
-        if (!this.isTicking) {
-          this.isTicking = true;
-          this.lastTime = performance.now();
-          requestAnimationFrame((t) => this.tick(t));
-        }
-      }
-
-      updateBounds() {
-        const maxScroll = this.getMaxScroll();
-        this.targetY = Math.min(this.targetY, maxScroll);
-        this.currentY = Math.min(this.currentY, maxScroll);
-        this.updateProgress();
-      }
-
-      updateProgress() {
-        const maxScroll = this.getMaxScroll();
-        const progress = maxScroll > 0 ? Math.min(Math.max(this.currentY / maxScroll, 0), 1) : 0;
-        if (this.progressBar) {
-          this.progressBar.style.width = (progress * 100).toFixed(2) + '%';
         }
       }
 
@@ -1176,31 +1131,24 @@
         const dt = Math.min((now - this.lastTime) / 1000, 0.05);
         this.lastTime = now;
 
-        const diff = this.currentY - this.targetY;
+        const diff = this.currentProgress - this.targetProgress;
         const springForce = -this.stiffness * diff;
-        const dampingForce = -this.damping * this.velocity;
+        const dampingForce = -this.damping * this.progressVelocity;
         const acceleration = (springForce + dampingForce) / this.mass;
 
-        this.velocity += acceleration * dt;
-        this.currentY += this.velocity * dt;
+        this.progressVelocity += acceleration * dt;
+        this.currentProgress += this.progressVelocity * dt;
 
-        const maxScroll = this.getMaxScroll();
-        if (this.currentY < 0) {
-          this.currentY = 0;
-          this.velocity = 0;
-        } else if (this.currentY > maxScroll) {
-          this.currentY = maxScroll;
-          this.velocity = 0;
+        if (this.progressBar) {
+          this.progressBar.style.width = (Math.min(Math.max(this.currentProgress, 0), 1) * 100).toFixed(2) + '%';
         }
 
-        window.scrollTo(0, this.currentY);
-        this.updateProgress();
-
-        if (Math.abs(diff) < 0.5 && Math.abs(this.velocity) < 1) {
-          this.currentY = this.targetY;
-          this.velocity = 0;
-          window.scrollTo(0, this.currentY);
-          this.updateProgress();
+        if (Math.abs(diff) < 0.001 && Math.abs(this.progressVelocity) < 0.01) {
+          this.currentProgress = this.targetProgress;
+          this.progressVelocity = 0;
+          if (this.progressBar) {
+            this.progressBar.style.width = (this.currentProgress * 100).toFixed(2) + '%';
+          }
           this.isTicking = false;
         } else {
           requestAnimationFrame((t) => this.tick(t));
