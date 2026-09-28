@@ -1,566 +1,1214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Web Developer Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyron | Professional Web & Web3 Portfolio Showcase</title>
+  <meta name="description" content="Portfolio showcase of Zyron — Full-Stack Web Development, Modern Frontend, Scalable Backends, and Web3 Architecture.">
+  <link rel="icon" href="logo.png">
 
-        html {
-            scroll-behavior: smooth;
-        }
+  <!-- Google Fonts: Space Grotesk & Manrope matching dhananjoy.dev -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #0f3460 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <style>
+    :root {
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --color-cyan: #38bdf8;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+    }
 
-        /* Animated Background Elements */
-        .background-decoration {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.1;
-            animation: float 15s ease-in-out infinite;
-        }
+    /* BUNII-STYLE SPRING SCROLLING SYSTEM */
+    html {
+      scroll-behavior: auto; /* Handled smoothly by spring physics engine */
+      overflow-x: clip;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(56, 189, 248, 0.35) rgba(2, 6, 23, 0.8);
+    }
 
-        .glow-orb:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            background: #00d4ff;
-            top: -100px;
-            left: -100px;
-            animation-delay: 0s;
-        }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
 
-        .glow-orb:nth-child(2) {
-            width: 350px;
-            height: 350px;
-            background: #a00ff7;
-            bottom: -50px;
-            right: -50px;
-            animation-delay: 3s;
-        }
+    ::-webkit-scrollbar-track {
+      background: rgba(2, 6, 23, 0.8);
+    }
 
-        .glow-orb:nth-child(3) {
-            width: 300px;
-            height: 300px;
-            background: #00f0ff;
-            top: 50%;
-            right: 10%;
-            animation-delay: 6s;
-        }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.28);
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.05); }
-        }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.55);
+    }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+    #scrollProgressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+      z-index: 99999;
+      pointer-events: none;
+      transition: width 0.05s linear;
+    }
 
-        /* Section Title Animation */
-        .section-title {
-            position: relative;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-            letter-spacing: -2px;
-        }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto !important;
+      }
+      #scrollProgressBar {
+        display: none;
+      }
+    }
 
-        .section-title .gradient-text {
-            background: linear-gradient(
-                135deg,
-                #00d4ff 0%,
-                #a00ff7 25%,
-                #ff006e 50%,
-                #00d4ff 75%,
-                #a00ff7 100%
-            );
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 8s ease infinite, textGlow 0.1s ease-out;
-            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
-        }
+    body {
+      font-family: var(--font-sans);
+      background: linear-gradient(180deg, #050b19 0%, #030816 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    /* BACKGROUND MESH & GLOWS (Matching dhananjoy.dev) */
+    .bg-mesh-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-        @keyframes textGlow {
-            0%, 100% {
-                text-shadow: 
-                    0 0 10px rgba(0, 212, 255, 0.3),
-                    0 0 20px rgba(160, 15, 247, 0.2);
-            }
-            50% {
-                text-shadow: 
-                    0 0 20px rgba(0, 212, 255, 0.5),
-                    0 0 40px rgba(160, 15, 247, 0.4);
-            }
-        }
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+      background-size: 112px 112px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 92%);
+      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 92%);
+      opacity: 0.85;
+    }
 
-        /* Animated Underline */
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #00d4ff, #a00ff7, #ff006e);
-            border-radius: 2px;
-            animation: underlineExpand 1s ease-out forwards 0.3s;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
-        }
+    .ambient-glow-1 {
+      position: absolute;
+      left: 6%;
+      top: 15%;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(34, 211, 238, 0.09), transparent 72%);
+      filter: blur(64px);
+    }
 
-        @keyframes underlineExpand {
-            from {
-                width: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            to {
-                width: 120px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
+    .ambient-glow-2 {
+      position: absolute;
+      right: 6%;
+      bottom: 25%;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.11), transparent 74%);
+      filter: blur(72px);
+    }
 
-        /* About Section */
-        .about-section {
-            margin-top: 80px;
-        }
+    /* FLOATING NAVBAR */
+    .nav-wrapper {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 16px;
+    }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            margin-top: 40px;
-        }
+    .navbar-pill {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.2),
-                inset 0 1px 1px rgba(255, 255, 255, 0.1),
-                0 0 40px rgba(0, 212, 255, 0.1);
-            animation: slideInUp 0.8s ease-out;
-            overflow: hidden;
-        }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
+    .brand-logo-container {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 2px;
+      box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .brand-logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        @keyframes shimmer {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
-        }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
 
-        .glass-card-content {
-            position: relative;
-            z-index: 1;
-        }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-        .glass-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #00d4ff, #a00ff7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .nav-link {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-        .highlight-line {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin: 15px 0;
-            padding-left: 16px;
-            border-left: 3px solid transparent;
-            position: relative;
-            animation: slideInLeft 0.6s ease-out backwards;
-        }
+    .nav-link:hover {
+      color: #ffffff;
+    }
 
-        .highlight-line:nth-child(2) { animation-delay: 0.1s; }
-        .highlight-line:nth-child(3) { animation-delay: 0.2s; }
-        .highlight-line:nth-child(4) { animation-delay: 0.3s; }
-        .highlight-line:nth-child(5) { animation-delay: 0.4s; }
-        .highlight-line:nth-child(6) { animation-delay: 0.5s; }
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      background: rgba(34, 211, 238, 0.08);
+      color: #67e8f9;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+    .back-home-btn:hover {
+      background: rgba(34, 211, 238, 0.2);
+      border-color: rgba(34, 211, 238, 0.6);
+      color: #ffffff;
+      transform: translateX(-2px);
+    }
 
-        .highlight-line::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #00d4ff, #a00ff7, transparent);
-            border-radius: 2px;
-            animation: expandBorder 0.6s ease-out backwards;
-        }
+    /* CONTAINER */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 130px 24px 60px;
+      position: relative;
+      z-index: 1;
+    }
 
-        @keyframes expandBorder {
-            from {
-                height: 0;
-                top: 50%;
-            }
-            to {
-                height: 100%;
-                top: 0;
-            }
-        }
+    .showcase-hero {
+      text-align: center;
+      margin-bottom: 50px;
+    }
 
-        .highlight-line:nth-child(2)::before { animation-delay: 0.1s; }
-        .highlight-line:nth-child(3)::before { animation-delay: 0.2s; }
-        .highlight-line:nth-child(4)::before { animation-delay: 0.3s; }
-        .highlight-line:nth-child(5)::before { animation-delay: 0.4s; }
-        .highlight-line:nth-child(6)::before { animation-delay: 0.5s; }
+    .section-kicker {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: rgba(103, 232, 249, 0.85);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
 
-        /* Image Container */
-        .image-container {
-            position: relative;
-            animation: floatImage 0.8s ease-out;
-        }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
 
-        @keyframes floatImage {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+    .hero-desc {
+      font-size: 16px;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
-        .glass-card-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(160, 15, 247, 0.1));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            animation: glow-pulse 4s ease-in-out infinite;
-        }
+    /* STATS GRID */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
 
-        @keyframes glow-pulse {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(0, 212, 255, 0.4), inset 0 0 30px rgba(0, 212, 255, 0.1);
-            }
-        }
+    .stat-card {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 23, 0.5);
+      padding: 24px;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+    }
 
-        .glass-card-image::before {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
-            border-radius: 50%;
-            animation: float-circle 6s ease-in-out infinite;
-        }
+    .stat-card:hover {
+      border-color: rgba(34, 211, 238, 0.25);
+      transform: translateY(-3px);
+    }
 
-        @keyframes float-circle {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(20px, 20px); }
-            50% { transform: translate(0, 40px); }
-            75% { transform: translate(-20px, 20px); }
-        }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
 
-        /* Stats Section */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
+    .stat-label {
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
 
-        .stat-card {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            animation: slideInUp 0.8s ease-out;
-            transition: all 0.3s ease;
-        }
+    /* GRID ARCHITECTURE */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
 
-        .stat-card:hover {
-            border-color: rgba(0, 212, 255, 0.6);
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
-        }
+    .dhananjoy-card {
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 23, 0.55);
+      padding: 30px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
 
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    .dhananjoy-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34, 211, 238, 0.28);
+      box-shadow: 0 22px 60px rgba(34, 211, 238, 0.08);
+    }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #00d4ff, #a00ff7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
 
-        .stat-label {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-            letter-spacing: 0.5px;
-        }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 15px;
-            }
+    .card-body {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.65;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
 
-            .section-title {
-                font-size: clamp(1.8rem, 6vw, 2.5rem);
-                margin-bottom: 40px;
-            }
+    .pill-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      margin-bottom: 18px;
+    }
 
-            .section-title::after {
-                width: 80px;
-            }
+    .pill-tag {
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 11px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+    .card-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-            .glass-card {
-                padding: 25px;
-            }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 15px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-            .glass-card-image {
-                height: 300px;
-            }
+    .card-link:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.55);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+    }
 
-            .stats-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-        }
+    .card-link i {
+      font-size: 11px;
+      transition: transform 0.2s ease;
+    }
 
-        @media (max-width: 480px) {
-            .section-title::after {
-                width: 60px;
-            }
+    .card-link:hover i {
+      transform: translateX(2px) translateY(-1px);
+    }
 
-            .glass-card {
-                padding: 20px;
-            }
+    /* ========================================================
+       ORBITAL NAVIGATION BUTTON & DOCK (Matching Screenshot)
+       ======================================================== */
+    .fixed-orbital-dock {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
 
-            .highlight-line {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
+    .orbital-dock-container {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
+    .orbital-glow-layer {
+      position: absolute;
+      inset: -14px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(34, 211, 238, 0.25), rgba(59, 130, 246, 0.12) 50%, transparent 72%);
+      filter: blur(14px);
+      pointer-events: none;
+      animation: orbitalPulse 3s ease-in-out infinite alternate;
+    }
 
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
+    @keyframes orbitalPulse {
+      0% { transform: scale(0.95); opacity: 0.75; }
+      100% { transform: scale(1.1); opacity: 1; }
+    }
 
-        /* Scroll Animation Class */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-        }
+    .orbital-dashed-ring {
+      position: absolute;
+      inset: -7px;
+      border-radius: 9999px;
+      border: 1px dashed rgba(34, 211, 238, 0.5);
+      opacity: 0.85;
+      pointer-events: none;
+      animation: rotateOrbit 16s linear infinite;
+    }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s ease-out;
-        }
-    </style>
+    @keyframes rotateOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .orbital-button-core {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(34, 211, 238, 0.45);
+      background: radial-gradient(circle at 35% 25%, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      color: #38bdf8;
+      box-shadow: 0 16px 36px rgba(34, 211, 238, 0.18), inset 0 0 14px rgba(34, 211, 238, 0.12);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
+      padding: 0;
+      outline: none;
+    }
+
+    .orbital-button-core:hover {
+      transform: translateY(-2px) scale(1.05);
+      border-color: rgba(34, 211, 238, 0.85);
+      box-shadow: 0 20px 42px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.22);
+      color: #67e8f9;
+    }
+
+    .orbital-bg-icon {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      opacity: 0.45;
+      color: #38bdf8;
+      pointer-events: none;
+      animation: orbitCounterRotate 24s linear infinite;
+    }
+
+    @keyframes orbitCounterRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    .orbital-fg-icon {
+      position: relative;
+      width: 17px;
+      height: 17px;
+      color: #38bdf8;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
+    }
+
+    .orbital-close-svg {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      color: #38bdf8;
+      opacity: 0;
+      transform: scale(0.6) rotate(-90deg);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fixed-orbital-dock.is-open .orbital-fg-icon {
+      opacity: 0;
+      transform: scale(0.5) rotate(90deg);
+    }
+
+    .fixed-orbital-dock.is-open .orbital-close-svg {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      color: #ffffff;
+    }
+
+    .fixed-orbital-dock.is-open .orbital-dashed-ring {
+      border-color: rgba(34, 211, 238, 0.85);
+      animation-duration: 5s;
+    }
+
+    .orbital-fan-menu {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .orbital-fan-item {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(3, 8, 22, 0.95);
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 30px rgba(2, 6, 23, 0.5), 0 0 14px rgba(34, 211, 238, 0.12);
+      backdrop-filter: blur(20px);
+      text-decoration: none;
+      font-size: 14px;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, border-color 0.25s, color 0.25s;
+      opacity: 0;
+      transform: translate(0, 0) scale(0.6);
+      pointer-events: none;
+    }
+
+    .orbital-fan-item:hover {
+      border-color: rgba(34, 211, 238, 0.85);
+      color: #38bdf8;
+      box-shadow: 0 16px 36px rgba(34, 211, 238, 0.3);
+      transform: translate(var(--tx), var(--ty)) scale(1.15) !important;
+    }
+
+    .fixed-orbital-dock.is-open .orbital-fan-item {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(var(--tx), var(--ty)) scale(1);
+    }
+
+    .orbital-fan-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(2, 6, 23, 0.95);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      color: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .orbital-fan-item:hover .orbital-fan-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-3px);
+    }
+
+    /* HEADER NAVBAR ORBITAL BUTTON */
+    .header-orbital-btn {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .header-orbital-btn:hover {
+      transform: translateY(-1px) scale(1.06);
+    }
+
+    .header-orbital-glow {
+      position: absolute;
+      inset: -6px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at center, rgba(34, 211, 238, 0.25), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .header-orbital-dashed {
+      position: absolute;
+      inset: -3px;
+      border-radius: 9999px;
+      border: 1px dashed rgba(34, 211, 238, 0.5);
+      opacity: 0.85;
+      pointer-events: none;
+      animation: rotateOrbit 16s linear infinite;
+    }
+
+    .header-orbital-inner {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(34, 211, 238, 0.45);
+      background: radial-gradient(circle at 35% 25%, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.15), inset 0 0 10px rgba(34, 211, 238, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38bdf8;
+      transition: all 0.25s ease;
+    }
+
+    .header-orbital-btn:hover .header-orbital-inner {
+      border-color: rgba(34, 211, 238, 0.85);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 12px rgba(34, 211, 238, 0.2);
+      color: #67e8f9;
+    }
+
+    .header-orbital-inner .orbital-bg-icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .header-orbital-inner .orbital-fg-icon {
+      width: 13px;
+      height: 13px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 32px 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #38bdf8;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Background Decoration -->
-    <div class="background-decoration">
-        <div class="glow-orb"></div>
-        <div class="glow-orb"></div>
-        <div class="glow-orb"></div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Section Title -->
-        <div class="section-title">
-            <span class="gradient-text">About Me</span>
+  <!-- BUNII-STYLE TOP SCROLL PROGRESS INDICATOR -->
+  <div id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- BACKGROUND MESH -->
+  <div class="bg-mesh-canvas" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+  </div>
+
+  <!-- FLOATING NAVBAR -->
+  <div class="nav-wrapper">
+    <header class="navbar-pill">
+      <a href="index.html" class="brand-group">
+        <div class="brand-logo-container">
+          <img src="profile.jpg" alt="Zyron" onerror="this.src='logo.png'">
         </div>
+        <span class="brand-name">Zyron</span>
+      </a>
 
-        <!-- About Section -->
-        <section class="about-section">
-            <div class="about-grid">
-                <!-- Left: Text Content -->
-                <div class="glass-card">
-                    <div class="glass-card-content">
-                        <h3>Full-Stack Developer</h3>
-                        <div class="highlight-line">💡 Passionate about creating beautiful and functional web experiences</div>
-                        <div class="highlight-line">🚀 Specialized in modern frontend frameworks and cloud technologies</div>
-                        <div class="highlight-line">🎨 Designer at heart with a developer's mindset for problem-solving</div>
-                        <div class="highlight-line">⚡ Performance-first approach to every project I build</div>
-                        <div class="highlight-line">🌐 Building scalable solutions that impact millions worldwide</div>
-                        <div class="highlight-line">📚 Continuous learner committed to staying ahead of industry trends</div>
-                    </div>
-                </div>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="back-home-btn">
+          <i class="fas fa-arrow-left"></i>
+          <span>Overview</span>
+        </a>
 
-                <!-- Right: Visual Element -->
-                <div class="image-container">
-                    <div class="glass-card-image">
-                        👨‍💻
-                    </div>
-                </div>
-            </div>
+        <!-- SIGNATURE ORBITAL BUTTON -->
+        <a href="index.html" class="header-orbital-btn" aria-label="Return to Zyron Homepage" title="Home Hub">
+          <span class="header-orbital-glow" aria-hidden="true"></span>
+          <span class="header-orbital-dashed" aria-hidden="true"></span>
+          <span class="header-orbital-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="orbital-bg-icon" aria-hidden="true">
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85"></path>
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+              <circle cx="19" cy="5" r="2"></circle>
+              <circle cx="5" cy="19" r="2"></circle>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="orbital-fg-icon" aria-hidden="true">
+              <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+              <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </header>
+  </div>
 
-            <!-- Stats Section -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">8+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Client Satisfaction</div>
-                </div>
-            </div>
-        </section>
+  <main class="container">
+
+    <div class="showcase-hero">
+      <span class="section-kicker">CURATED REPOSITORY</span>
+      <h1 class="hero-title">Engineering & Architecture Showcase</h1>
+      <p class="hero-desc">
+        A deep breakdown of applications, decentralized protocols, and digital systems built by Zyron.
+      </p>
     </div>
 
-    <!-- Scroll Animation Script -->
-    <script>
-        // Performance-optimized scroll animation using Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <!-- STATS -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Deployments & Builds</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100K+</div>
+        <div class="stat-label">Active Users Reached</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Execution Reliability</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Code Integrity</div>
+      </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    <!-- SHOWCASE GRID -->
+    <div class="showcase-grid">
 
-        // Observe all reveal elements on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.glass-card, .stat-card, .image-container');
-            revealElements.forEach(el => {
-                el.classList.add('reveal');
-                observer.observe(el);
-            });
+      <!-- Item 1: BunInk — Official Inkonchain Mint -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+        <h2 class="card-title">BunInk — Official Inkonchain Mint</h2>
+        <p class="card-body">
+          High-performance digital collectible and mint whitelist engine on Inkonchain L2.
+          Features dynamic task verification, interactive eligibility checker, gas-optimized contracts, and responsive minting UI.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">Inkonchain L2</span>
+          <span class="pill-tag">NFT Minting</span>
+          <span class="pill-tag">Task Engine</span>
+          <span class="pill-tag">Smart Contracts</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.bunink.xyz" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Launch BunInk</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Inkonchain L2</span>
+        </div>
+      </div>
+
+      <!-- Item 2: ROBINOS NFT Early Access Platform -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-compass"></i></div>
+        <h2 class="card-title">ROBINOS NFT Early Access Platform</h2>
+        <p class="card-body">
+          Premium Web3 early access platform built with a dynamic quest engine, cryptographic proof verification,
+          real-time applicant qualification pipeline, and administrative management dashboard.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">Web3 Platform</span>
+          <span class="pill-tag">Quest Engine</span>
+          <span class="pill-tag">Proof Verification</span>
+          <span class="pill-tag">Admin Console</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.robinos.space" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Launch ROBINOS</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Production dApp</span>
+        </div>
+      </div>
+
+      <!-- Item 3: WeZards — Enter the Circle -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+        <h2 class="card-title">WeZards — Enter the Circle</h2>
+        <p class="card-body">
+          Gamified Web3 community portal and interactive quest platform. Enables users to complete immersive
+          challenges, earn ecosystem status, and interact with verifiable smart contract rewards.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">Gamified Web3</span>
+          <span class="pill-tag">Interactive Quests</span>
+          <span class="pill-tag">Smart Contracts</span>
+          <span class="pill-tag">Modern UI</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.wezards.xyz" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Launch WeZards</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Live Ecosystem</span>
+        </div>
+      </div>
+
+      <!-- Item 3: Phant0ms -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-ghost"></i></div>
+        <h2 class="card-title">Phant0ms Web3 Project</h2>
+        <p class="card-body">
+          Decentralized financial infrastructure integrating high-speed blockchain interactions,
+          real-time telemetry, and modular user interface architecture.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">DeFi</span>
+          <span class="pill-tag">Web3</span>
+          <span class="pill-tag">Full-Stack</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.phant0ms.com" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Visit Phant0ms</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Production</span>
+        </div>
+      </div>
+
+      <!-- Item 4: BaseCorezArts -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+        <h2 class="card-title">BaseCorezArts Marketplace</h2>
+        <p class="card-body">
+          Creator-first digital art platform enabling artists to mint, trade, and showcase verifiable
+          digital assets on Base with minimal transaction fees.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">Base Blockchain</span>
+          <span class="pill-tag">Digital Art</span>
+          <span class="pill-tag">Marketplace</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.basecorezarts.xyz" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Explore Marketplace</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Live Marketplace</span>
+        </div>
+      </div>
+
+      <!-- Item 5: Web3 QA Testing -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-vial"></i></div>
+        <h2 class="card-title">L2 Rollup Quality Assurance</h2>
+        <p class="card-body">
+          Multi-network testing suite verifying transaction finality, account abstraction,
+          and bridge mechanics across ZKSync, Arbitrum, and Aptos testnets and mainnets.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">ZKSync</span>
+          <span class="pill-tag">Arbitrum</span>
+          <span class="pill-tag">Aptos</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://zksync.io" target="_blank" rel="noopener noreferrer" class="card-link">
+            <span>Protocol Details</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Testing & QA</span>
+        </div>
+      </div>
+
+      <!-- Item 6: Mathematical Research & Cryptographic Modeling -->
+      <div class="dhananjoy-card">
+        <div class="card-icon"><i class="fas fa-microscope"></i></div>
+        <h2 class="card-title">Mathematical Research & Modeling</h2>
+        <p class="card-body">
+          Applied analytical modeling, cryptographic proof systems, and algorithmic simulations
+          bridging computational mathematics with autonomous decentralized systems.
+        </p>
+        <div class="pill-tags-list">
+          <span class="pill-tag">Applied Math</span>
+          <span class="pill-tag">Cryptography</span>
+          <span class="pill-tag">Algorithms</span>
+        </div>
+        <div class="card-footer">
+          <a href="index.html#about" class="card-link">
+            <span>Learn About Research</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <span style="font-size: 12px; color: #64748b;">Theoretical Science</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="index.html" class="back-home-btn" style="padding: 12px 28px; font-size: 14px;">
+        <i class="fas fa-arrow-left"></i>
+        <span>Return to Zyron Main Portfolio</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FLOATING ORBITAL SECTION NAVIGATION DOCK -->
+  <div class="fixed-orbital-dock" id="orbitalDock">
+    <div class="orbital-dock-container">
+      
+      <!-- Radial Fan Menu of Sections -->
+      <nav class="orbital-fan-menu" id="orbitalFanMenu" aria-label="Quick navigation">
+        <a href="index.html#home" class="orbital-fan-item" style="--tx: -130px; --ty: 0px;" title="Home">
+          <i class="fas fa-home"></i>
+          <span class="orbital-fan-tooltip">Home</span>
+        </a>
+        <a href="index.html#about" class="orbital-fan-item" style="--tx: -115px; --ty: -60px;" title="About">
+          <i class="fas fa-user-astronaut"></i>
+          <span class="orbital-fan-tooltip">About</span>
+        </a>
+        <a href="index.html#services" class="orbital-fan-item" style="--tx: -75px; --ty: -110px;" title="Services">
+          <i class="fas fa-cubes-stacked"></i>
+          <span class="orbital-fan-tooltip">Services</span>
+        </a>
+        <a href="index.html#skills" class="orbital-fan-item" style="--tx: 0px; --ty: -135px;" title="Skills">
+          <i class="fas fa-brain"></i>
+          <span class="orbital-fan-tooltip">Skills</span>
+        </a>
+        <a href="index.html#projects" class="orbital-fan-item" style="--tx: 75px; --ty: -110px;" title="Projects">
+          <i class="fas fa-folder-tree"></i>
+          <span class="orbital-fan-tooltip">Projects</span>
+        </a>
+        <a href="index.html#contact" class="orbital-fan-item" style="--tx: 115px; --ty: -60px;" title="Contact">
+          <i class="fas fa-paper-plane"></i>
+          <span class="orbital-fan-tooltip">Contact</span>
+        </a>
+        <a href="index.html" class="orbital-fan-item" style="--tx: 130px; --ty: 0px;" title="Zyron Home">
+          <i class="fas fa-arrow-left"></i>
+          <span class="orbital-fan-tooltip">Back to Home</span>
+        </a>
+      </nav>
+
+      <!-- Ambient Glow and Orbit Ring -->
+      <div class="orbital-glow-layer" aria-hidden="true"></div>
+      <div class="orbital-dashed-ring" aria-hidden="true"></div>
+
+      <!-- Core Orbit Button -->
+      <button type="button" class="orbital-button-core" id="orbitalToggleBtn" aria-label="Open section navigation" aria-expanded="false" onclick="toggleOrbitalNav()">
+        <!-- Background Orbit Ring SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="orbital-bg-icon" aria-hidden="true">
+          <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85"></path>
+          <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+          <circle cx="19" cy="5" r="2"></circle>
+          <circle cx="5" cy="19" r="2"></circle>
+        </svg>
+
+        <!-- Center Home Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="orbital-fg-icon" aria-hidden="true">
+          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+          <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        </svg>
+
+        <!-- Close X Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="orbital-close-svg" aria-hidden="true">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Zyron — All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Orbital Navigation Toggle
+    function toggleOrbitalNav() {
+      const dock = document.getElementById('orbitalDock');
+      if (dock) {
+        dock.classList.toggle('is-open');
+        const btn = document.getElementById('orbitalToggleBtn');
+        if (btn) {
+          const isOpen = dock.classList.contains('is-open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          btn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        }
+      }
+    }
+
+    function closeOrbitalNav() {
+      const dock = document.getElementById('orbitalDock');
+      if (dock) {
+        dock.classList.remove('is-open');
+        const btn = document.getElementById('orbitalToggleBtn');
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open navigation');
+        }
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const dock = document.getElementById('orbitalDock');
+      const headerBtn = document.querySelector('.header-orbital-btn');
+      if (dock && dock.classList.contains('is-open')) {
+        if (!dock.contains(e.target) && (!headerBtn || !headerBtn.contains(e.target))) {
+          closeOrbitalNav();
+        }
+      }
+    });
+
+    // ========================================================
+    // BUNII-STYLE PHYSICS SPRING SMOOTH SCROLL SYSTEM
+    // Parameters calibrated to bunii.fun:
+    // stiffness: 90, damping: 22, mass: 0.5
+    // ========================================================
+    class BuniiScrollEngine {
+      constructor() {
+        this.stiffness = 90;
+        this.damping = 22;
+        this.mass = 0.5;
+
+        this.currentY = window.scrollY;
+        this.targetY = window.scrollY;
+        this.velocity = 0;
+        this.isTicking = false;
+        this.lastTime = performance.now();
+        this.progressBar = document.getElementById('scrollProgressBar');
+
+        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        this.init();
+      }
+
+      init() {
+        if (this.reducedMotion) return;
+
+        window.addEventListener('wheel', (e) => this.onWheel(e), { passive: false });
+        window.addEventListener('scroll', () => this.onNativeScroll(), { passive: true });
+        window.addEventListener('resize', () => this.updateBounds(), { passive: true });
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') return;
+            const targetEl = document.querySelector(href);
+            if (targetEl) {
+              e.preventDefault();
+              const offsetTop = targetEl.getBoundingClientRect().top + window.scrollY - 85;
+              this.scrollTo(offsetTop);
+            }
+          });
         });
 
-        // Add subtle mouse parallax effect to glass cards
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const rotateX = ((y - rect.height / 2) / rect.height) * 5;
-                const rotateY = ((x - rect.width / 2) / rect.width) * 5;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-            });
+        this.updateProgress();
+      }
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            });
-        });
-    </script>
+      getMaxScroll() {
+        return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      }
+
+      onWheel(e) {
+        const maxScroll = this.getMaxScroll();
+        if (maxScroll <= 0) return;
+
+        if (e.ctrlKey || e.metaKey) return;
+
+        e.preventDefault();
+
+        let delta = e.deltaY;
+        if (e.deltaMode === 1) delta *= 36;
+        else if (e.deltaMode === 2) delta *= window.innerHeight;
+
+        this.targetY = Math.min(Math.max(this.targetY + delta, 0), maxScroll);
+
+        if (!this.isTicking) {
+          this.isTicking = true;
+          this.lastTime = performance.now();
+          requestAnimationFrame((t) => this.tick(t));
+        }
+      }
+
+      onNativeScroll() {
+        if (!this.isTicking) {
+          this.currentY = window.scrollY;
+          this.targetY = window.scrollY;
+          this.updateProgress();
+        }
+      }
+
+      scrollTo(targetPosition) {
+        const maxScroll = this.getMaxScroll();
+        this.targetY = Math.min(Math.max(targetPosition, 0), maxScroll);
+        if (!this.isTicking) {
+          this.isTicking = true;
+          this.lastTime = performance.now();
+          requestAnimationFrame((t) => this.tick(t));
+        }
+      }
+
+      updateBounds() {
+        const maxScroll = this.getMaxScroll();
+        this.targetY = Math.min(this.targetY, maxScroll);
+        this.currentY = Math.min(this.currentY, maxScroll);
+        this.updateProgress();
+      }
+
+      updateProgress() {
+        const maxScroll = this.getMaxScroll();
+        const progress = maxScroll > 0 ? Math.min(Math.max(this.currentY / maxScroll, 0), 1) : 0;
+        if (this.progressBar) {
+          this.progressBar.style.width = (progress * 100).toFixed(2) + '%';
+        }
+      }
+
+      tick(now) {
+        const dt = Math.min((now - this.lastTime) / 1000, 0.05);
+        this.lastTime = now;
+
+        const diff = this.currentY - this.targetY;
+        const springForce = -this.stiffness * diff;
+        const dampingForce = -this.damping * this.velocity;
+        const acceleration = (springForce + dampingForce) / this.mass;
+
+        this.velocity += acceleration * dt;
+        this.currentY += this.velocity * dt;
+
+        const maxScroll = this.getMaxScroll();
+        if (this.currentY < 0) {
+          this.currentY = 0;
+          this.velocity = 0;
+        } else if (this.currentY > maxScroll) {
+          this.currentY = maxScroll;
+          this.velocity = 0;
+        }
+
+        window.scrollTo(0, this.currentY);
+        this.updateProgress();
+
+        if (Math.abs(diff) < 0.5 && Math.abs(this.velocity) < 1) {
+          this.currentY = this.targetY;
+          this.velocity = 0;
+          window.scrollTo(0, this.currentY);
+          this.updateProgress();
+          this.isTicking = false;
+        } else {
+          requestAnimationFrame((t) => this.tick(t));
+        }
+      }
+    }
+
+    const buniiScroll = new BuniiScrollEngine();
+  </script>
 </body>
 </html>
