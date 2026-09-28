@@ -53,7 +53,7 @@ async function connectToDatabase() {
 }
 
 // Telegram notification sender
-async function sendTelegramNotification({ subject, email, contactMethod, otherMethodName, contactHandle, projectDetails }) {
+async function sendTelegramNotification({ subject, offerPrice, email, contactMethod, otherMethodName, contactHandle, projectDetails }) {
   const token = process.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_TOKEN || process.env.BOT_TOKEN;
   // User specified @zaynkabirweb3; bot can send to chat_id or public channel/username if configured
   const chatId = process.env.TELEGRAM_CHAT_ID || process.env.TELEGRAM_CHATID || process.env.CHAT_ID || process.env.TELEGRAM_TO || '@zaynkabirweb3';
@@ -71,6 +71,7 @@ async function sendTelegramNotification({ subject, email, contactMethod, otherMe
 `🚀 *New Website / Project Request!*
 
 📌 *Subject:* ${subject}
+💰 *Offer Price:* ${offerPrice || '$35 (Minimum)'}
 ✉️ *Email:* ${email}
 💬 *Contact Method:* ${methodDisplay}
 🆔 *Handle / Info:* ${contactHandle || 'Not provided'}
@@ -125,7 +126,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { subject, email, contactMethod, otherMethodName, contactHandle, projectDetails } = req.body || {};
+    const { subject, offerPrice, customOffer, email, contactMethod, otherMethodName, contactHandle, projectDetails } = req.body || {};
 
     // Validate required fields
     if (!subject || typeof subject !== 'string' || !subject.trim()) {
@@ -134,12 +135,41 @@ export default async function handler(req, res) {
     if (!email || typeof email !== 'string' || !email.includes('@')) {
       return res.status(400).json({ error: 'Please provide a valid email address.' });
     }
+
+    // Validate Offer Price (Minimum $35 USD)
+    let parsedOfferString = '$35';
+    let numericOfferAmount = 35;
+
+    if (offerPrice === 'custom') {
+      const parsedCustom = Number(String(customOffer).replace(/[^0-9.]/g, ''));
+      if (isNaN(parsedCustom) || parsedCustom < 35) {
+        return res.status(400).json({ 
+          error: 'Offer price must be at least $35. Offers below $35 are not available.' 
+        });
+      }
+      numericOfferAmount = parsedCustom;
+      parsedOfferString = `$${parsedCustom}`;
+    } else if (offerPrice) {
+      const parsedPreset = Number(String(offerPrice).replace(/[^0-9.]/g, ''));
+      if (isNaN(parsedPreset) || parsedPreset < 35) {
+        return res.status(400).json({ 
+          error: 'Offer price must be at least $35. Offers below $35 are not available.' 
+        });
+      }
+      numericOfferAmount = parsedPreset;
+      parsedOfferString = `$${parsedPreset}`;
+    } else {
+      return res.status(400).json({ error: 'Please select an offer price (starting from $35).' });
+    }
+
     if (!projectDetails || typeof projectDetails !== 'string' || !projectDetails.trim()) {
       return res.status(400).json({ error: 'Please provide details about your project.' });
     }
 
     const cleanData = {
       subject: subject.trim(),
+      offerPrice: parsedOfferString,
+      offerAmount: numericOfferAmount,
       email: email.trim().toLowerCase(),
       contactMethod: (contactMethod || 'email').trim().toLowerCase(),
       otherMethodName: otherMethodName ? otherMethodName.trim() : '',
