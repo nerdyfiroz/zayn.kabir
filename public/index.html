@@ -594,6 +594,7 @@
     .hero-title.drip-title .name-highlight.drip-highlight {
       background: linear-gradient(180deg, #ffffff 12%, #38bdf8 52%, #818cf8 85%, #a855f7 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
       position: relative;
@@ -1150,6 +1151,608 @@
       transform: translateY(-6px);
       border-color: rgba(56, 189, 248, 0.45);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.2);
+    }
+
+    /* ========================================================
+       ANIMATED SCROLL DOWN & SCROLL UP CONTROLS
+       ======================================================== */
+    .projects-badge-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-badge-actions {
+        align-items: flex-start;
+        width: 100%;
+      }
+    }
+
+    .featured-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .projects-scroll-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 9999px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .animated-scroll-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #94a3b8;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .animated-scroll-btn:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .animated-mouse-icon {
+      width: 13px;
+      height: 18px;
+      border-radius: 7px;
+      border: 1.5px solid rgba(56, 189, 248, 0.55);
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .animated-wheel-up {
+      width: 2px;
+      height: 4px;
+      background: #38bdf8;
+      border-radius: 2px;
+      margin-top: 2px;
+      animation: mouseWheelUp 1.8s ease-in-out infinite;
+    }
+
+    .animated-wheel-down {
+      width: 2px;
+      height: 4px;
+      background: #38bdf8;
+      border-radius: 2px;
+      margin-top: 2px;
+      animation: mouseWheelDown 1.8s ease-in-out infinite;
+    }
+
+    .scroll-bounce-up {
+      font-size: 11px;
+      color: #38bdf8;
+      animation: scrollBounceUp 2s ease-in-out infinite;
+    }
+
+    .scroll-bounce-down {
+      font-size: 11px;
+      color: #38bdf8;
+      animation: scrollBounceDown 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounceUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    @keyframes scrollBounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    @keyframes mouseWheelUp {
+      0% { transform: translateY(3px); opacity: 0; }
+      40% { transform: translateY(0); opacity: 1; }
+      80% { transform: translateY(-3px); opacity: 0; }
+      100% { transform: translateY(3px); opacity: 0; }
+    }
+
+    @keyframes mouseWheelDown {
+      0% { transform: translateY(-3px); opacity: 0; }
+      40% { transform: translateY(0); opacity: 1; }
+      80% { transform: translateY(3px); opacity: 0; }
+      100% { transform: translateY(-3px); opacity: 0; }
+    }
+
+    /* Bottom strip scroll controls */
+    .projects-bottom-scroll-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .bottom-scroll-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      backdrop-filter: blur(14px);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .bottom-scroll-pill:hover {
+      color: #ffffff;
+      border-color: rgba(56, 189, 248, 0.55);
+      background: rgba(30, 41, 59, 0.85);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+    }
+
+    .bottom-scroll-pill.highlight {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+
+    .bottom-scroll-pill.highlight:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.7);
+      color: #ffffff;
+    }
+
+    /* Floating Quick Dual Scroll Controller */
+    .floating-scroll-dock {
+      position: fixed;
+      right: 24px;
+      bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      padding: 6px 4px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(56, 189, 248, 0.2);
+      z-index: 990;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .floating-scroll-btn {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .floating-scroll-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      transform: scale(1.1);
+    }
+
+    .floating-scroll-btn:active {
+      transform: scale(0.95);
+    }
+
+    .floating-scroll-divider {
+      width: 20px;
+      height: 1px;
+      background: rgba(56, 189, 248, 0.2);
+      margin: 2px 0;
+    }
+
+    .floating-scroll-tooltip {
+      position: absolute;
+      right: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      background: rgba(2, 6, 23, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #f1f5f9;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .floating-scroll-btn:hover .floating-scroll-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    @media (max-width: 640px) {
+      .floating-scroll-dock {
+        right: 14px;
+        bottom: 24px;
+      }
+    }
+
+    /* ========================================================
+       DHANANJOY.DEV ABOUT & SERVICES SYSTEM
+       ======================================================== */
+    /* ABOUT 2-COLUMN SPLIT (What I Build & How I Work) */
+    .about-two-col-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      margin-top: 24px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 992px) {
+      .about-two-col-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-main-card {
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 23, 0.55);
+      padding: clamp(24px, 3.5vw, 36px);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .about-main-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-main-card .about-subhead {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    .about-main-card .about-lead {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #94a3b8;
+    }
+
+    .about-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    @media (max-width: 640px) {
+      .about-highlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-highlight-item {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.65);
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-highlight-item i {
+      color: #38bdf8;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .about-side-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about-side-card {
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 23, 0.55);
+      padding: clamp(20px, 2.8vw, 30px);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .about-side-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.65), 0 0 24px rgba(56, 189, 248, 0.12);
+    }
+
+    .about-side-card.cyan-accent {
+      border-color: rgba(56, 189, 248, 0.22);
+    }
+
+    .about-side-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: #38bdf8;
+      font-weight: 700;
+      display: block;
+    }
+
+    .about-side-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .about-side-desc {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #94a3b8;
+    }
+
+    .about-side-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 18px;
+    }
+
+    /* SERVICES 4-COLUMN RESPONSIVE SECTION */
+    .services-header-split {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 868px) {
+      .services-header-split {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .services-header-left {
+      max-width: 680px;
+    }
+
+    .services-header-right {
+      max-width: 420px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    .services-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 26px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 1200px) {
+      .services-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card-item {
+      display: flex;
+      flex-direction: column;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 23, 0.55);
+      padding: 26px;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card-item:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.15);
+    }
+
+    .service-badge-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .service-card-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-top: 14px;
+      letter-spacing: -0.015em;
+    }
+
+    .service-card-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #94a3b8;
+      margin-top: 10px;
+      margin-bottom: 22px;
+    }
+
+    .service-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .service-check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .service-check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .service-card-bottom {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .service-pricing-box {
+      border-radius: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 12px 16px;
+    }
+
+    .service-pricing-kicker {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #7dd3fc;
+      font-weight: 700;
+      display: block;
+    }
+
+    .service-pricing-value {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-request-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 46px;
+      border-radius: 9999px;
+      background: #38bdf8;
+      color: #020617;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1.5px solid #38bdf8;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.25);
+    }
+
+    .service-request-btn:hover {
+      background: #7dd3fc;
+      border-color: #7dd3fc;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(56, 189, 248, 0.4);
+      color: #020617;
+    }
+
+    .service-request-btn i {
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .service-request-btn:hover i {
+      transform: translateX(3px);
     }
 
     /* SKILLS CARDS */
@@ -2054,121 +2657,298 @@
             </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT SECTION (Dhananjoy.dev structure with What I Build & How I Work) -->
     <section id="about">
-            <div class="section-header">
-              <span class="section-kicker">ABOUT ZYRON</span>
-              <h2 class="section-heading">Bridging Mathematics with Web3 Architecture</h2>
-              <p class="section-desc">
-                Building resilient decentralized applications requires more than just code—it demands mathematical discipline,
-                cryptographic precision, and an intuitive grasp of user psychology and incentive models.
+      <div class="section-header">
+        <span class="section-kicker">ABOUT ME</span>
+        <h2 class="section-heading">A Full Stack Web Developer with a research mindset</h2>
+        <p class="section-desc">
+          I build practical, scalable web applications and bring a structured, problem-solving mindset to both software and research.
+        </p>
+      </div>
+
+      <!-- 2-COLUMN SPLIT: About Main Card & What I Build / How I Work Cards -->
+      <div class="about-two-col-grid">
+        <!-- Left: Core Bio & Background Pillars -->
+        <div class="about-main-card">
+          <div>
+            <span class="about-side-kicker" style="margin-bottom: 6px;">DISCIPLINE & ENGINEERING</span>
+            <h3 class="about-subhead">A Full Stack Web Developer with a research mindset</h3>
+            <p class="about-lead">
+              I build practical, scalable web applications and bring a structured, problem-solving mindset to both software and research.
+            </p>
+
+            <div class="about-highlight-grid">
+              <div class="about-highlight-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>B.Sc. (Hons.) in Mathematics & Analytical Foundations</span>
+              </div>
+              <div class="about-highlight-item">
+                <i class="fas fa-laptop-code"></i>
+                <span>Full stack web development for business and organizational platforms</span>
+              </div>
+              <div class="about-highlight-item">
+                <i class="fas fa-cubes"></i>
+                <span>Computational methods, algorithmic modeling & decentralized logic</span>
+              </div>
+              <div class="about-highlight-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Focused on clear UX, stable structure, and real-world usefulness</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 13.5px; line-height: 1.65; color: #94a3b8; margin: 0;">
+            My background in Mathematics gives me a strong foundation in analytical thinking and structured problem-solving. I apply this mindset to web development, focusing on building applications that are efficient, maintainable, and valuable in real-world use cases.
+          </p>
+        </div>
+
+        <!-- Right: What I Build & How I Work (Matches User Screenshot 1 Exactly) -->
+        <div class="about-side-stack">
+          <!-- Card 1: WHAT I BUILD -->
+          <div class="about-side-card cyan-accent">
+            <div>
+              <span class="about-side-kicker">WHAT I BUILD</span>
+              <h3 class="about-side-title">Building Scalable Web Applications</h3>
+              <p class="about-side-desc">
+                I develop full-stack web applications that are fast, responsive, and built for real-world use.
+                From dashboards to e-commerce platforms, I focus on creating solutions that deliver both performance and usability.
               </p>
             </div>
+            <p class="about-side-meta">NEXT.JS • REACT.JS • TYPESCRIPT • FULL-STACK</p>
+          </div>
 
-            <div class="horizontal-card-strip">
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-calculator"></i></div>
-                <h3 class="card-title">Mathematical Foundation</h3>
-                <p class="card-body">
-                  Grounded in rigorous analytical mathematics, discrete structures, and quantitative modeling.
-                  Applying probabilistic logic to risk mitigation, protocol mechanics, and algorithmic efficiency.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">Discrete Math</span>
-                  <span class="pill-tag">Probability</span>
-                  <span class="pill-tag">Graph Theory</span>
-                  <span class="pill-tag">Algorithmic Modeling</span>
-                </div>
-              </div>
-
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-network-wired"></i></div>
-                <h3 class="card-title">Decentralized Systems</h3>
-                <p class="card-body">
-                  Deep hands-on experience across Layer 1 and Layer 2 ecosystems including Base, ZKSync, Arbitrum, and Aptos.
-                  Focusing on trust-minimized architecture and tokenized incentive alignment.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">Base Chain</span>
-                  <span class="pill-tag">ZKSync</span>
-                  <span class="pill-tag">EVM</span>
-                  <span class="pill-tag">Smart Contracts</span>
-                </div>
-              </div>
-
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-bullhorn"></i></div>
-                <h3 class="card-title">Growth & Community Lead</h3>
-                <p class="card-body">
-                  Leading technical architecture and high-retention ecosystem expansion for cutting-edge Web3 applications and platforms.
-                  Orchestrating viral referral mechanics, ambassador campaigns, and high-retention onboarding.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">Community Building</span>
-                  <span class="pill-tag">Growth Funnels</span>
-                  <span class="pill-tag">Web3 Onboarding</span>
-                  <span class="pill-tag">Token Strategy</span>
-                </div>
-              </div>
+          <!-- Card 2: HOW I WORK -->
+          <div class="about-side-card">
+            <div>
+              <span class="about-side-kicker">HOW I WORK</span>
+              <h3 class="about-side-title">Clean Process, Reliable Results</h3>
+              <p class="about-side-desc">
+                My workflow is focused on clarity, structure, and efficiency.
+                I write clean, maintainable code, design intuitive user experiences, and ensure performance across all devices.
+              </p>
             </div>
+            <p class="about-side-meta">CLEAN CODE • USABILITY • PERFORMANCE</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Specialization Strip -->
+      <div class="horizontal-card-strip" style="margin-top: 24px;">
+        <div class="dhananjoy-card">
+          <div class="card-top-icon"><i class="fas fa-calculator"></i></div>
+          <h3 class="card-title">Mathematical Foundation</h3>
+          <p class="card-body">
+            Grounded in rigorous analytical mathematics, discrete structures, and quantitative modeling.
+            Applying probabilistic logic to risk mitigation, protocol mechanics, and algorithmic efficiency.
+          </p>
+          <div class="pill-tags-list">
+            <span class="pill-tag">Discrete Math</span>
+            <span class="pill-tag">Probability</span>
+            <span class="pill-tag">Graph Theory</span>
+            <span class="pill-tag">Algorithmic Modeling</span>
+          </div>
+        </div>
+
+        <div class="dhananjoy-card">
+          <div class="card-top-icon"><i class="fas fa-network-wired"></i></div>
+          <h3 class="card-title">Decentralized Systems</h3>
+          <p class="card-body">
+            Deep hands-on experience across Layer 1 and Layer 2 ecosystems including Base, ZKSync, Arbitrum, and Aptos.
+            Focusing on trust-minimized architecture and tokenized incentive alignment.
+          </p>
+          <div class="pill-tags-list">
+            <span class="pill-tag">Base Chain</span>
+            <span class="pill-tag">ZKSync</span>
+            <span class="pill-tag">EVM</span>
+            <span class="pill-tag">Smart Contracts</span>
+          </div>
+        </div>
+
+        <div class="dhananjoy-card">
+          <div class="card-top-icon"><i class="fas fa-bullhorn"></i></div>
+          <h3 class="card-title">Growth & Community Lead</h3>
+          <p class="card-body">
+            Leading technical architecture and high-retention ecosystem expansion for cutting-edge Web3 applications and platforms.
+            Orchestrating viral referral mechanics, ambassador campaigns, and high-retention onboarding.
+          </p>
+          <div class="pill-tags-list">
+            <span class="pill-tag">Community Building</span>
+            <span class="pill-tag">Growth Funnels</span>
+            <span class="pill-tag">Web3 Onboarding</span>
+            <span class="pill-tag">Token Strategy</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- SERVICES SECTION (Matches User Screenshot 2 Exactly from dhananjoy.dev) -->
     <section id="services">
-            <div class="section-header">
-              <span class="section-kicker">CAPABILITIES</span>
-              <h2 class="section-heading">What I Help You Architect & Scale</h2>
-              <p class="section-desc">
-                From full-stack decentralized interfaces to mathematical token models and global community engagement.
-              </p>
+      <div class="services-header-split">
+        <div class="services-header-left">
+          <span class="service-badge-kicker">SERVICES</span>
+          <h2 class="section-heading">What I can help you build</h2>
+          <p class="section-desc">
+            Professional web services for clients, businesses, and personal brands looking for clear structure, practical execution, and reliable delivery.
+          </p>
+        </div>
+        <p class="services-header-right">
+          Starting prices give a quick estimate. Final cost depends on project scope, feature depth, and delivery timeline.
+        </p>
+      </div>
+
+      <!-- 4 Service Cards Grid -->
+      <div class="services-cards-grid">
+        
+        <!-- Service 1: Frontend Development -->
+        <div class="service-card-item">
+          <span class="service-badge-kicker">SERVICE</span>
+          <h3 class="service-card-title">Frontend Development</h3>
+          <p class="service-card-desc">
+            Modern, responsive interfaces for landing pages, business websites, and product-focused web experiences.
+          </p>
+          <ul class="service-checklist">
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Landing pages</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Business websites</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Dashboard UI</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Responsive redesign</span>
+            </li>
+          </ul>
+          <div class="service-card-bottom">
+            <div class="service-pricing-box">
+              <span class="service-pricing-kicker">PRICING</span>
+              <p class="service-pricing-value">Starting from $80</p>
             </div>
+            <button type="button" class="service-request-btn" onclick="requestService('Frontend Development', 80)">
+              <span>Request This Service</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
 
-            <div class="horizontal-card-strip">
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-code"></i></div>
-                <h3 class="card-title">Full-Stack Web Development</h3>
-                <p class="card-body">
-                  Clean, performant web applications crafted with modern JavaScript, TypeScript, responsive layout systems,
-                  and optimized Node.js architectures.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">HTML5 / Modern CSS</span>
-                  <span class="pill-tag">JavaScript / TypeScript</span>
-                  <span class="pill-tag">Node.js & Express</span>
-                  <span class="pill-tag">REST & WebSockets</span>
-                </div>
-              </div>
-
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-shield-halved"></i></div>
-                <h3 class="card-title">Web3 QA & Protocol Testing</h3>
-                <p class="card-body">
-                  Comprehensive testing, quality assurance, and edge-case evaluation across L2 rollups, testnets,
-                  and mainnet dApps to ensure infallible user experiences.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">Testnet Deployments</span>
-                  <span class="pill-tag">Rollup Verification</span>
-                  <span class="pill-tag">Bridge Auditing</span>
-                  <span class="pill-tag">Bug Reporting</span>
-                </div>
-              </div>
-
-              <div class="dhananjoy-card">
-                <div class="card-top-icon"><i class="fas fa-users-gear"></i></div>
-                <h3 class="card-title">Community & Ecosystem Growth</h3>
-                <p class="card-body">
-                  Designing and executing high-retention Web3 community management strategies across social platforms,
-                  developer channels, and X to foster loyal, engaged user ecosystems.
-                </p>
-                <div class="pill-tags-list">
-                  <span class="pill-tag">Community Architecture</span>
-                  <span class="pill-tag">Ecosystem Growth</span>
-                  <span class="pill-tag">User Retention</span>
-                  <span class="pill-tag">Onboarding Funnels</span>
-                </div>
-              </div>
+        <!-- Service 2: Full Stack Web Apps -->
+        <div class="service-card-item">
+          <span class="service-badge-kicker">SERVICE</span>
+          <h3 class="service-card-title">Full Stack Web Apps</h3>
+          <p class="service-card-desc">
+            Complete web application development with scalable frontend structure, backend logic, and deployment-ready setup.
+          </p>
+          <ul class="service-checklist">
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Custom web apps</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Authentication</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>API integration</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Database setup</span>
+            </li>
+          </ul>
+          <div class="service-card-bottom">
+            <div class="service-pricing-box">
+              <span class="service-pricing-kicker">PRICING</span>
+              <p class="service-pricing-value">Starting from $150</p>
             </div>
+            <button type="button" class="service-request-btn" onclick="requestService('Full Stack Web Apps', 150)">
+              <span>Request This Service</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 3: Portfolio Websites -->
+        <div class="service-card-item">
+          <span class="service-badge-kicker">SERVICE</span>
+          <h3 class="service-card-title">Portfolio Websites</h3>
+          <p class="service-card-desc">
+            Professional personal websites for students, job seekers, and creators who want a strong digital presence.
+          </p>
+          <ul class="service-checklist">
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Personal branding</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Project showcase</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Resume integration</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Mobile-first UI</span>
+            </li>
+          </ul>
+          <div class="service-card-bottom">
+            <div class="service-pricing-box">
+              <span class="service-pricing-kicker">PRICING</span>
+              <p class="service-pricing-value">Starting from $60</p>
+            </div>
+            <button type="button" class="service-request-btn" onclick="requestService('Portfolio Websites', 60)">
+              <span>Request This Service</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service 4: Bug Fix & UI Improvement -->
+        <div class="service-card-item">
+          <span class="service-badge-kicker">SERVICE</span>
+          <h3 class="service-card-title">Bug Fix & UI Improvement</h3>
+          <p class="service-card-desc">
+            Targeted improvements for existing projects, including layout fixes, visual polish, and better usability.
+          </p>
+          <ul class="service-checklist">
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Responsive fixes</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>UI polish</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Performance cleanup</span>
+            </li>
+            <li class="service-check-item">
+              <span class="service-check-icon"><i class="fas fa-check"></i></span>
+              <span>Small feature updates</span>
+            </li>
+          </ul>
+          <div class="service-card-bottom">
+            <div class="service-pricing-box">
+              <span class="service-pricing-kicker">PRICING</span>
+              <p class="service-pricing-value">Starting from $25</p>
+            </div>
+            <button type="button" class="service-request-btn" onclick="requestService('Bug Fix & UI Improvement', 25)">
+              <span>Request This Service</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- SKILLS SECTION -->
@@ -2252,63 +3032,37 @@
                   </p>
                 </div>
 
-                <!-- Featured Projects Badge -->
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 9999px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.28); backdrop-filter: blur(16px);">
-                  <i class="fas fa-layer-group" style="color: #38bdf8; font-size: 13px;"></i>
-                  <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #38bdf8; letter-spacing: 0.05em;">07 Featured Projects</span>
+                <!-- Featured Projects Badge & Animated Scroll Controls -->
+                <div class="projects-badge-actions">
+                  <div class="featured-badge-pill">
+                    <i class="fas fa-layer-group" style="color: #38bdf8; font-size: 13px;"></i>
+                    <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #38bdf8; letter-spacing: 0.05em;">07 Featured Projects</span>
+                  </div>
+
+                  <!-- Animated Scroll Down and Scroll Up Navigation -->
+                  <div class="projects-scroll-nav" role="navigation" aria-label="Section Scroll Controls">
+                    <a href="#skills" class="animated-scroll-btn scroll-btn-up" aria-label="Glide Up to Skills" title="Glide Up">
+                      <span class="animated-mouse-icon">
+                        <span class="animated-wheel-up"></span>
+                      </span>
+                      <span class="scroll-btn-label">Scroll Up</span>
+                      <i class="fas fa-chevron-up scroll-bounce-up"></i>
+                    </a>
+                    <a href="#contact" class="animated-scroll-btn scroll-btn-down" aria-label="Glide Down to Contact" title="Glide Down">
+                      <span class="scroll-btn-label">Scroll Down</span>
+                      <span class="animated-mouse-icon">
+                        <span class="animated-wheel-down"></span>
+                      </span>
+                      <i class="fas fa-chevron-down scroll-bounce-down"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <!-- 7 Rich Project Cards Row -->
+              <!-- 7 Rich Project Cards Row (Reordered: WeZards -> Phant0ms -> BaseCorezArts -> ROBINOS -> BunInk -> Others) -->
               <div class="projects-cards-row" id="projectsCardsRow">
                 
-                <!-- Project 1: BunInk — Official Inkonchain Mint -->
-                <div class="horizontal-card dhananjoy-card">
-                  <div class="card-top-icon"><i class="fas fa-layer-group"></i></div>
-                  <h3 class="card-title">BunInk — Official Inkonchain Mint</h3>
-                  <p class="card-body">
-                    High-performance digital collectible and mint whitelist engine on Inkonchain L2.
-                    Features dynamic task verification, interactive eligibility checker, gas-optimized contracts, and responsive mint UI.
-                  </p>
-                  <div class="pill-tags-list">
-                    <span class="pill-tag">Inkonchain L2</span>
-                    <span class="pill-tag">NFT Mint</span>
-                    <span class="pill-tag">Task Engine</span>
-                    <span class="pill-tag">Smart Contracts</span>
-                  </div>
-                  <div class="card-footer-action">
-                    <a href="https://www.bunink.xyz" target="_blank" rel="noopener noreferrer" class="action-link">
-                      <span>Launch BunInk</span>
-                      <i class="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <span style="font-size: 12px; color: #64748b;">Inkonchain L2</span>
-                  </div>
-                </div>
-
-                <!-- Project 2: ROBINOS NFT Early Access Platform -->
-                <div class="horizontal-card dhananjoy-card">
-                  <div class="card-top-icon"><i class="fas fa-compass"></i></div>
-                  <h3 class="card-title">ROBINOS NFT Early Access Platform</h3>
-                  <p class="card-body">
-                    Premium Web3 early access platform built with a dynamic quest engine, cryptographic proof verification,
-                    real-time applicant qualification pipeline, and administrative management dashboard.
-                  </p>
-                  <div class="pill-tags-list">
-                    <span class="pill-tag">Web3 Platform</span>
-                    <span class="pill-tag">Quest Engine</span>
-                    <span class="pill-tag">Proof Verification</span>
-                    <span class="pill-tag">Admin Console</span>
-                  </div>
-                  <div class="card-footer-action">
-                    <a href="https://www.robinos.space" target="_blank" rel="noopener noreferrer" class="action-link">
-                      <span>Launch ROBINOS</span>
-                      <i class="fas fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <span style="font-size: 12px; color: #64748b;">Production dApp</span>
-                  </div>
-                </div>
-
-                <!-- Project 3: WeZards — Enter the Circle -->
+                <!-- Project 1: WeZards — Enter the Circle -->
                 <div class="horizontal-card dhananjoy-card">
                   <div class="card-top-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
                   <h3 class="card-title">WeZards — Enter the Circle</h3>
@@ -2331,7 +3085,7 @@
                   </div>
                 </div>
 
-                <!-- Project 4: Phant0ms Project -->
+                <!-- Project 2: Phant0ms Web3 Project -->
                 <div class="horizontal-card dhananjoy-card">
                   <div class="card-top-icon"><i class="fas fa-ghost"></i></div>
                   <h3 class="card-title">Phant0ms Web3 Project</h3>
@@ -2354,7 +3108,7 @@
                   </div>
                 </div>
 
-                <!-- Project 5: BaseCorezArts Platform -->
+                <!-- Project 3: BaseCorezArts Platform -->
                 <div class="horizontal-card dhananjoy-card">
                   <div class="card-top-icon"><i class="fas fa-palette"></i></div>
                   <h3 class="card-title">BaseCorezArts Platform</h3>
@@ -2377,7 +3131,53 @@
                   </div>
                 </div>
 
-                <!-- Project 6: Web3 Testing & QA Suite -->
+                <!-- Project 4: ROBINOS NFT Early Access Platform -->
+                <div class="horizontal-card dhananjoy-card">
+                  <div class="card-top-icon"><i class="fas fa-compass"></i></div>
+                  <h3 class="card-title">ROBINOS NFT Early Access Platform</h3>
+                  <p class="card-body">
+                    Premium Web3 early access platform built with a dynamic quest engine, cryptographic proof verification,
+                    real-time applicant qualification pipeline, and administrative management dashboard.
+                  </p>
+                  <div class="pill-tags-list">
+                    <span class="pill-tag">Web3 Platform</span>
+                    <span class="pill-tag">Quest Engine</span>
+                    <span class="pill-tag">Proof Verification</span>
+                    <span class="pill-tag">Admin Console</span>
+                  </div>
+                  <div class="card-footer-action">
+                    <a href="https://www.robinos.space" target="_blank" rel="noopener noreferrer" class="action-link">
+                      <span>Launch ROBINOS</span>
+                      <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <span style="font-size: 12px; color: #64748b;">Production dApp</span>
+                  </div>
+                </div>
+
+                <!-- Project 5: BunInk — Official Inkonchain Mint -->
+                <div class="horizontal-card dhananjoy-card">
+                  <div class="card-top-icon"><i class="fas fa-layer-group"></i></div>
+                  <h3 class="card-title">BunInk — Official Inkonchain Mint</h3>
+                  <p class="card-body">
+                    High-performance digital collectible and mint whitelist engine on Inkonchain L2.
+                    Features dynamic task verification, interactive eligibility checker, gas-optimized contracts, and responsive mint UI.
+                  </p>
+                  <div class="pill-tags-list">
+                    <span class="pill-tag">Inkonchain L2</span>
+                    <span class="pill-tag">NFT Mint</span>
+                    <span class="pill-tag">Task Engine</span>
+                    <span class="pill-tag">Smart Contracts</span>
+                  </div>
+                  <div class="card-footer-action">
+                    <a href="https://www.bunink.xyz" target="_blank" rel="noopener noreferrer" class="action-link">
+                      <span>Launch BunInk</span>
+                      <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <span style="font-size: 12px; color: #64748b;">Inkonchain L2</span>
+                  </div>
+                </div>
+
+                <!-- Project 6: Multi-Chain Protocol QA & Testing -->
                 <div class="horizontal-card dhananjoy-card">
                   <div class="card-top-icon"><i class="fas fa-vial-circle-check"></i></div>
                   <h3 class="card-title">Multi-Chain Protocol QA & Testing</h3>
@@ -2423,6 +3223,18 @@
                   </div>
                 </div>
 
+              </div>
+
+              <!-- Animated Bottom Section Scroll Controls -->
+              <div class="projects-bottom-scroll-bar">
+                <a href="#projects" class="bottom-scroll-pill" aria-label="Scroll back up to top of Projects">
+                  <i class="fas fa-arrow-up scroll-bounce-up"></i>
+                  <span>Scroll Up to Projects Top</span>
+                </a>
+                <a href="#contact" class="bottom-scroll-pill highlight" aria-label="Scroll down to Get In Touch">
+                  <span>Scroll Down to Contact</span>
+                  <i class="fas fa-arrow-down scroll-bounce-down"></i>
+                </a>
               </div>
             </div>
     </section>
@@ -2522,7 +3334,7 @@
             />
           </div>
 
-          <!-- Offer Price / Project Budget (Starts from $35 USD) -->
+          <!-- Offer Price / Project Budget (Starts from $50 USD) -->
           <div class="offer-price-grid" id="offerPriceGrid">
             <!-- Offer Price Dropdown -->
             <div class="form-group" id="offerSelectGroup">
@@ -2531,18 +3343,22 @@
               </label>
               <div class="select-wrapper">
                 <select id="formOfferPrice" name="offerPrice" class="form-select" required>
-                  <option value="35">$35 (Base Minimum)</option>
-                  <option value="45">$45</option>
-                  <option value="75">$75</option>
+                  <option value="25">$25 (Bug Fix & UI Improvement)</option>
+                  <option value="50">$50 (Base Minimum)</option>
+                  <option value="60">$60 (Portfolio Website)</option>
+                  <option value="80">$80 (Frontend Development)</option>
                   <option value="100">$100</option>
+                  <option value="150">$150 (Full Stack Web App)</option>
                   <option value="200">$200</option>
+                  <option value="350">$350</option>
                   <option value="500">$500</option>
+                  <option value="1000">$1,000</option>
                   <option value="custom">Custom (Type your offer amount)...</option>
                 </select>
                 <i class="fas fa-chevron-down select-chevron" aria-hidden="true"></i>
               </div>
               <span class="form-hint" style="font-size: 11.5px; color: #64748b; margin-top: 3px;">
-                <i class="fas fa-circle-info" style="font-size: 10px; margin-right: 4px; color: #38bdf8;"></i>Starts from $35. Offers below $35 are not available.
+                <i class="fas fa-circle-info" style="font-size: 10px; margin-right: 4px; color: #38bdf8;"></i>Starts from $50. Offers below $50 are not available. Final price depends on tasks and scope.
               </span>
             </div>
 
@@ -2558,13 +3374,13 @@
                   id="formCustomOffer" 
                   name="customOffer" 
                   class="form-input" 
-                  placeholder="Min. 35" 
-                  min="35"
+                  placeholder="Min. 50" 
+                  min="50"
                   step="1"
                 />
               </div>
               <span class="form-hint" style="font-size: 11.5px; color: #38bdf8; margin-top: 3px;">
-                Enter $35 or higher (minimum allowed: $35 USD).
+                Enter $50 or higher (minimum allowed: $50 USD). Final price depends on tasks.
               </span>
             </div>
           </div>
@@ -2691,6 +3507,19 @@
       </button>
 
     </div>
+  </div>
+
+  <!-- DUAL ANIMATED FLOATING SCROLL CONTROLLER (Scroll Up & Scroll Down) -->
+  <div class="floating-scroll-dock" id="floatingScrollDock" aria-label="Quick Scroll Controls">
+    <button type="button" class="floating-scroll-btn btn-scroll-up" id="floatingScrollUpBtn" aria-label="Scroll Up" title="Scroll Up">
+      <i class="fas fa-chevron-up scroll-bounce-up"></i>
+      <span class="floating-scroll-tooltip">Scroll Up</span>
+    </button>
+    <div class="floating-scroll-divider"></div>
+    <button type="button" class="floating-scroll-btn btn-scroll-down" id="floatingScrollDownBtn" aria-label="Scroll Down" title="Scroll Down">
+      <i class="fas fa-chevron-down scroll-bounce-down"></i>
+      <span class="floating-scroll-tooltip">Scroll Down</span>
+    </button>
   </div>
 
   <!-- INTERACTIVE SCRIPT (Particles, Typewriter, Mobile Menu, Toast) -->
@@ -2873,6 +3702,49 @@
           }, 300);
         }
       }
+
+      // Floating Dual Scroll Controller Actions
+      const sectionOrder = ['home', 'about', 'services', 'skills', 'projects', 'contact'];
+      function getCurrentSectionIndex() {
+        const scrollPos = (window.scrollY || document.documentElement.scrollTop) + 160;
+        let currentIdx = 0;
+        sectionOrder.forEach((id, idx) => {
+          const el = document.getElementById(id);
+          if (el && scrollPos >= el.offsetTop) {
+            currentIdx = idx;
+          }
+        });
+        return currentIdx;
+      }
+
+      const floatingUp = document.getElementById('floatingScrollUpBtn');
+      const floatingDown = document.getElementById('floatingScrollDownBtn');
+
+      if (floatingUp) {
+        floatingUp.addEventListener('click', () => {
+          const idx = getCurrentSectionIndex();
+          const prevIdx = Math.max(0, idx - 1);
+          const targetEl = document.getElementById(sectionOrder[prevIdx]);
+          if (targetEl) {
+            const headerOffset = 85;
+            const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          }
+        });
+      }
+
+      if (floatingDown) {
+        floatingDown.addEventListener('click', () => {
+          const idx = getCurrentSectionIndex();
+          const nextIdx = Math.min(sectionOrder.length - 1, idx + 1);
+          const targetEl = document.getElementById(sectionOrder[nextIdx]);
+          if (targetEl) {
+            const headerOffset = 85;
+            const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          }
+        });
+      }
     }
 
     // ========================================================
@@ -3000,7 +3872,7 @@
           return;
         }
         if (!offerPrice) {
-          showBanner('error', 'Please select an offer price (starting from $35).');
+          showBanner('error', 'Please select an offer price (starting from $50).');
           offerSelect.focus();
           return;
         }
@@ -3011,8 +3883,8 @@
             customOfferInput.focus();
             return;
           }
-          if (customNum < 35) {
-            showBanner('error', 'Offers less than $35 are not available. Minimum offer price is $35 USD.');
+          if (customNum < 25) {
+            showBanner('error', 'Offers less than $25 are not available. Minimum offer price is $25 USD.');
             customOfferInput.focus();
             return;
           }
@@ -3073,6 +3945,54 @@
         }
       });
     }
+
+    // Interactive Service Request Handler (Auto-fills subject and smooth scrolls to contact)
+    window.requestService = function(serviceTitle, priceValue) {
+      const subjectInput = document.getElementById('formSubject');
+      const offerSelect = document.getElementById('formOfferPrice');
+      const detailsInput = document.getElementById('formProjectDetails');
+
+      if (subjectInput) {
+        subjectInput.value = serviceTitle;
+      }
+
+      if (offerSelect) {
+        let found = false;
+        for (let i = 0; i < offerSelect.options.length; i++) {
+          if (offerSelect.options[i].value == priceValue) {
+            offerSelect.selectedIndex = i;
+            found = true;
+            break;
+          }
+        }
+
+        const customGroup = document.getElementById('customOfferGroup');
+        const customInput = document.getElementById('formCustomOffer');
+        const grid = document.getElementById('offerPriceGrid');
+
+        if (!found) {
+          offerSelect.value = 'custom';
+          if (customGroup && customInput && grid) {
+            customGroup.style.display = 'block';
+            grid.classList.add('has-custom');
+            customInput.value = priceValue;
+          }
+        } else if (customGroup && grid) {
+          customGroup.style.display = 'none';
+          grid.classList.remove('has-custom');
+        }
+      }
+
+      const targetEl = document.getElementById('contact');
+      if (targetEl) {
+        const headerOffset = 85;
+        const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        setTimeout(() => {
+          if (detailsInput) detailsInput.focus();
+        }, 450);
+      }
+    };
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {

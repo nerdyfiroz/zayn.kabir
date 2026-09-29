@@ -71,7 +71,7 @@ async function sendTelegramNotification({ subject, offerPrice, email, contactMet
 `🚀 *New Website / Project Request!*
 
 📌 *Subject:* ${subject}
-💰 *Offer Price:* ${offerPrice || '$35 (Minimum)'}
+💰 *Offer Price:* ${offerPrice || '$50 (Minimum)'}
 ✉️ *Email:* ${email}
 💬 *Contact Method:* ${methodDisplay}
 🆔 *Handle / Info:* ${contactHandle || 'Not provided'}
@@ -136,30 +136,30 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Please provide a valid email address.' });
     }
 
-    // Validate Offer Price (Minimum $35 USD)
-    let parsedOfferString = '$35';
-    let numericOfferAmount = 35;
+    // Validate Offer Price (Minimum $25 USD)
+    let parsedOfferString = '$50';
+    let numericOfferAmount = 50;
 
     if (offerPrice === 'custom') {
       const parsedCustom = Number(String(customOffer).replace(/[^0-9.]/g, ''));
-      if (isNaN(parsedCustom) || parsedCustom < 35) {
+      if (isNaN(parsedCustom) || parsedCustom < 25) {
         return res.status(400).json({ 
-          error: 'Offer price must be at least $35. Offers below $35 are not available.' 
+          error: 'Offer price must be at least $25.' 
         });
       }
       numericOfferAmount = parsedCustom;
       parsedOfferString = `$${parsedCustom}`;
     } else if (offerPrice) {
       const parsedPreset = Number(String(offerPrice).replace(/[^0-9.]/g, ''));
-      if (isNaN(parsedPreset) || parsedPreset < 35) {
+      if (isNaN(parsedPreset) || parsedPreset < 25) {
         return res.status(400).json({ 
-          error: 'Offer price must be at least $35. Offers below $35 are not available.' 
+          error: 'Offer price must be at least $25.' 
         });
       }
       numericOfferAmount = parsedPreset;
       parsedOfferString = `$${parsedPreset}`;
     } else {
-      return res.status(400).json({ error: 'Please select an offer price (starting from $35).' });
+      return res.status(400).json({ error: 'Please select an offer price.' });
     }
 
     if (!projectDetails || typeof projectDetails !== 'string' || !projectDetails.trim()) {
